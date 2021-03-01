@@ -7,7 +7,7 @@ CREATE TABLE users(
     first_name VARCHAR(100) UNIQUE NOT NULL,
     last_name VARCHAR(100) UNIQUE NOT NULL,
     age INT UNSIGNED NOT NULL,
-    genre TEXT, 
+    gender TINYINT(1), 
     img_path VARCHAR(1024),
     bio TEXT NOT NULL,
     login_id VARCHAR(200) UNIQUE NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE users(
 
 CREATE TABLE chats(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    chat_name VARCHAR(120),
+    chat_name VARCHAR(120) NOT NULL,
     messages TEXT NOT NULL,
 );
 
