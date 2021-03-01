@@ -14,13 +14,13 @@ CREATE TABLE users(
     login_pw VARCHAR(200) UNIQUE NOT NULL,
     email VARCHAR(200) UNIQUE NOT NULL,
     security_question TEXT NOT NULL,
-    security_answer TEXT NOT NULL,
+    security_answer TEXT NOT NULL
 );
 
 CREATE TABLE chats(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     chat_name VARCHAR(120) NOT NULL,
-    messages TEXT NOT NULL,
+    messages TEXT NOT NULL
 );
 
 
