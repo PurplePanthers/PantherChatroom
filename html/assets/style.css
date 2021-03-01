@@ -1,0 +1,42 @@
+body {
+    font-family: 'Sulphur Point', sans-serif;
+    background-color: #c2c6c7
+}
+
+.welcome {
+    text-align: center;
+    margin-top: 30vh;
+}
+
+.register {
+    margin-top: 30vh;
+    border: 5px solid rgb(13, 6, 104);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #c4dbf5
+}
+
+.login {
+    margin-top: 30vh;
+    border: 5px solid rgb(13, 6, 104);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #c4dbf5
+}
+
+.btn {
+    margin-top: 25px;
+    color: white;
+    background-color: rgb(13, 6, 104);
+    width: 100px;
+    border-radius: 10px;
+}
+
+btn:hover{
+    transform: scale(1.2);
+    background-color: rgb(60, 53, 158)
+}
+
+h3 {
+    text-align: center;
+}
