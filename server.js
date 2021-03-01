@@ -1,8 +1,8 @@
-require( 'dotenv' ).config() // looks for .env ; process.env gets it's values
-
+const dot =require( 'dotenv' ).config() // looks for .env ; process.env gets it's values
 const express = require('express')
 const apiRouter = require('./app/router/router')
 const app = express()
+const socketio = require('socket.io')
 
 const PORT = process.env.PORT || 8080
 

@@ -5,8 +5,13 @@ real controller elements are the 'router', so we create a
 router folder
 ====================================================== */
 
+const { ISO_8601 } = require('moment');
 const orm = require('../models/orm');
 
+//Runs when client connects
+io.on('connection', socket => {
+    console.log('New connection...')
+})
 function router( app ){
     app.get('/api/tasks/:due?', async function(req, res) {
         const due = req.params.due ? { due: req.params.due } : ''
