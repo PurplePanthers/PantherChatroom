@@ -10,7 +10,7 @@ body {
     text-align: center;
     margin-top: 30vh;
     color:rgb(13, 6, 104);
-    animation: 1s ease-out 0s 1 slideInTop;
+    animation: 1.6s ease-out 0s 1 slideInTop;
 }
 
 @keyframes slideInTop {
@@ -20,14 +20,16 @@ body {
     100% {
       transform: translateY(0);
     }
-  }
+}
+
 
 .register {
     margin-top: 30vh;
     border: 5px solid rgb(13, 6, 104);
     padding: 15px;
     border-radius: 15px;
-    background-color: #c4dbf5
+    background-color: #c4dbf5;
+    animation: 1.6s ease-out 0s 1 fadeIn;
 }
 
 .login {
@@ -35,8 +37,14 @@ body {
     border: 5px solid rgb(13, 6, 104);
     padding: 15px;
     border-radius: 15px;
-    background-color: #c4dbf5
+    background-color: #c4dbf5;
+    animation: 1.6s ease-out 0s 1 fadeIn;
 }
+
+@keyframes fadeIn {
+    from { opacity:0; opacity: 1\9; } to { opacity:1; } 
+}
+
 
 .btn-center {
     text-align: center;
