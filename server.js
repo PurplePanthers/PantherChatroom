@@ -1,4 +1,3 @@
-
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -21,7 +20,7 @@ const io = socketio(server);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/mainroom.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 // THERE IS 3 WAYS TO SEND MESSAGES: 

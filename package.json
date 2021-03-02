@@ -1,20 +1,12 @@
 {
-
   "name": "PantherChatroom",
   "version": "1.0.0",
-  "description": "**------------------------------------------------------------PROJECT 2----------------------------------------------------------------**\r                                                              ===========",
-  "main": "server.js",
-
-  "name": "project2-template",
-  "version": "1.0.0",
-  "description": "",
+  "description": "**------------------------------------------------------------PROJECT 2----------------------------------------------------------------**                                                              ===========",
   "main": "server.js",
   "directories": {
     "doc": "docs"
   },
-
-    "url": "git+https://github.com/PurplePanthers/PantherChatroom.git"
-  },
+    "url": "git+https://github.com/PurplePanthers/PantherChatroom.git", 
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,23 +15,10 @@
   },
   "homepage": "https://github.com/PurplePanthers/PantherChatroom#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "moment": "^2.29.1",
-    "socket.io": "^3.1.2"
-
-    "url": "git+https://github.com/c0dehot/project2-template.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/c0dehot/project2-template/issues"
-  },
-  "homepage": "https://github.com/c0dehot/project2-template#readme",
-  "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "moment": "^2.27.0",
-    "mysql": "^2.18.1"
-
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "socket.io": "^3.1.2"
   }
 }
