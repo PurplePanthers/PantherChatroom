@@ -10,23 +10,26 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="assets/style.css" rel="stylesheet">
 
 
 </head>
-
+ 
 <body>
    
-    <div class="row full-height">
-        <div class="col-2" style="background-color: rgb(4, 1, 44);">
+    <div class="row ">
+
+        <!-- SIDENAV WITH BUTTONS -->
+        <div class="col-2 sidenav">
+            <h5 id="uName" style="text-align: center; color: white ;margin-top: 20%;">Welcome ${username}</h5>
             <ul>
-                <a href="/mainroom.html"><button class="btn btn-danger btn-sm mt-5 mb-3"
-                        style="width: fit-content; margin-left: 20%;">
-                        Leave Chat </button></a>
+                <button id="random" class="btn btn-primary mt-5 mb-3" style="width: 100%;">
+                    Start Chat </button>
                 <button class="btn btn-primary btn-sm mt-2 mb-3" style="width: fit-content; margin-left: 20%;">
                     Add Friend</button>
             </ul>
         </div>
+        
         <div class="col-9">
             <div class="container main">
                 <!-- <div class="user">Said</div> -->
