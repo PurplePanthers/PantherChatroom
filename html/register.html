@@ -16,7 +16,36 @@
 <body>
 
     <div class="container register">
-        <div class="mb-3">
+        <h3>Please register to continue</h3>
+        <form method="post" action="register">
+            <div class="form-container">
+                <label for="exampleFormControlInput1" class="form-label">First Name</label>
+               <div><input type="text" class="form-control" placeholder="First Name" name="first_name" required></div>
+               <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+               <div><input type="text" class="form-control" placeholder="Last Name" name="last_name" required></div>
+               <label for="exampleFormControlInput1" class="form-label">Username</label>
+               <div><input type="text" class="form-control" placeholder="Username" name="username" required></div>
+            </div>
+            <div class="form-container">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+              <div><input type="password" class="form-control" placeholder="Password" name="password"></div>
+              <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+              <div><input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" ></div> 
+            </div>
+            <div class="form-container"> 
+                <label for="exampleFormControlInput1" class="form-label">Security Question</label> 
+               <div><input type="email" class="form-control" placeholder="Security Question" name="security_question" required></div>
+               <div><br><input type="radio" value="male" name="gender" required><label>Male</label>
+                   <input type="radio" value="female" name="gender" required><label>Female</label>
+              </div>
+            </div>
+            <button class="btn"type="submit">Sign Up!</button>
+            <a class="btn"href="/PantherChatroom/html/login.html">Login</a>
+        </form>
+        </div>
+</body>
+</html>
+<!-- <div class="mb-3">
             <h3>Please register to continue</h3>
             <label for="exampleFormControlInput1" class="form-label">Username</label>
             <input type="username" class="form-control" id="exampleFormControlInput1" placeholder="username12345">

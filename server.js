@@ -1,4 +1,3 @@
-
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -18,12 +17,11 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'html')));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/mainroom.html');
+    res.sendFile(__dirname + '/html/index.html');
 });
-
 // THERE IS 3 WAYS TO SEND MESSAGES: 
 // socket.emit()  ---> for the user
 // socket.broadcast.emit() ---> for everyone except that user
