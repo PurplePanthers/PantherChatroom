@@ -15,6 +15,29 @@ body {
     background-color: rgb(13, 6, 104);
     height: 100vh;
 }
+.sidebtn {
+    color: rgb(13, 6, 104);
+    background-color:  rgb(188, 208, 247);
+    width: 95%;
+    margin: 5px;
+    border-radius: 15px;
+}
+.sidebtn:hover {
+    color: #b2e2ee;
+    background-color:  rgb(153, 182, 238);
+}
+
+.leavebtn {
+    color: rgb(13, 6, 104);
+    background-color:  rgb(231, 9, 9);
+    width: 95%;
+    margin: 5px;
+    border-radius: 15px;
+}
+.leavebtn:hover {
+    color: #b2e2ee;
+    background-color:  rgb(155, 20, 20);
+}
 
 
 /* WELCOME, LOGIN AND REGISTER PAGE CSS */
