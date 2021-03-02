@@ -17,11 +17,12 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'html')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/html/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
+
 // THERE IS 3 WAYS TO SEND MESSAGES: 
 // socket.emit()  ---> for the user
 // socket.broadcast.emit() ---> for everyone except that user
