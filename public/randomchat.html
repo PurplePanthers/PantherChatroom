@@ -10,30 +10,33 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="assets/style.css" rel="stylesheet">
 
 
 </head>
-
+ 
 <body>
    
-    <div class="row full-height">
-        <div class="col-2" style="background-color: rgb(4, 1, 44);">
+    <div class="row ">
+
+        <!-- SIDENAV WITH BUTTONS -->
+        <div class="col-2 sidenav">
+            <h5 id="uName" style="text-align: center; color: white ;margin-top: 20%;">Welcome ${username}</h5>
             <ul>
-                <a href="/mainroom.html"><button class="btn btn-danger btn-sm mt-5 mb-3"
-                        style="width: fit-content; margin-left: 20%;">
-                        Leave Chat </button></a>
-                <button class="btn btn-primary btn-sm mt-2 mb-3" style="width: fit-content; margin-left: 20%;">
+                <a href="./mainroom.html"><button class="btn btn-primary mb-3" style="width: 100%;">
+                    Leave Chat</button></a>
+                <button class="btn btn-primary mb-3" style="width: 100%;">
                     Add Friend</button>
             </ul>
         </div>
+
         <div class="col-9">
             <div class="container main">
                 <!-- <div class="user">Said</div> -->
                 <h2 style="margin: 5%;">Please wait for someone to join...</h2>
                 <ul id="messages"></ul>
-                <form id="form" action="">
-                    <input id="input" autocomplete="off" /><button>Send</button>
+                <form id="form" class="messageInput" action="">
+                    <input id="input" class="sendbtn" autocomplete="off" /><button>Send</button>
                 </form>
 
 
