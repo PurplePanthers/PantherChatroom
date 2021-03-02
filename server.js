@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 8080
 // for parsing incoming POST data
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
+io.on('connection', socket => {
+    console.log('New connection...')
+})
 // for serving all the normal html
 app.use( express.static('public') )
 
