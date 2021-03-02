@@ -22,6 +22,24 @@ function getChatHeader(email) {
     email
   );
 }
+// add new user to db
+function addUser(data) {
+  let dataSet = {
+    first_name: data.first_name,
+    last_name: data.last_name,
+    age: data.age,
+    gender: data.gender,
+    img_path: data.img_path,
+    bio: data.bio,
+    login_id: data.login_id,
+    login_pw: data.login_pw,
+    email: data.email,
+    security_question: data.security_question,
+    security_answer: data.security_answer,
+  };
+  let query = "INSERT INTO users SET ? ";
+  return db.query(query, dataSet);
+}
 // returns fn, ln, username, email, bio and img path from users table
 function getProfile(id) {
   return db.query(
@@ -70,4 +88,5 @@ module.exports = {
   getProfile,
   deleteUser,
   deleteChat,
+  addUser,
 };
