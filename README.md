@@ -26,13 +26,13 @@
                              _______________________|________________________|___________________________
     ________________________/_____________________       _____________|__     ____________\ _____________
    |______________________USERS____________________|    |_____chats______|    |__________Matches__________|
-   |--|----|---|-----|-------|-------|---|---------|    |--|--------|----|    |-------|-------------|-----|
-   |ID| FN | LN| Age | Genre |Picture|BIO|LogIn_Id |____|ID|Name |Message|    |USER_ID|Shown_User_Id|Liked|
+   |--|----|---|-----|-------|-------|---|---------|    |--|-----|-------|    |-------|-------------|-----|
+   |ID| FN | LN| Age | Gendre|Picture|BIO|LogIn_Id |____|ID|Name |Message|    |USER_ID|Shown_User_Id|Liked|
    |__|____|___|_____|_______|_______|___|_________|1  1|__|_____|_______|    |_______|_____________|_____|
     *|__________________________________________________________________________________________| *
   
   users update to :
-    |ID| FN | LN| Age | Genre |Picture|BIO|UserName| Password|Email|Question(forget password)|
+    |ID| FN | LN| Age | Gendre |Picture|BIO|UserName| Password|Email|Question(forget password)|
 
 chat rooms (IN the end)
 

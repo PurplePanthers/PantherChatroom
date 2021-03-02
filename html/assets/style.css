@@ -1,19 +1,35 @@
+/* OVER ALL CSS */
 body {
     font-family: 'Sulphur Point', sans-serif;
     background-color: #c2c6c7
 }
 
+
+/* WELCOME, LOGIN AND REGISTER PAGE CSS */
 .welcome {
     text-align: center;
     margin-top: 30vh;
+    color:rgb(13, 6, 104);
+    animation: 1.6s ease-out 0s 1 slideInTop;
 }
+
+@keyframes slideInTop {
+    0% {
+      transform: translateY(-500%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
 
 .register {
     margin-top: 30vh;
     border: 5px solid rgb(13, 6, 104);
     padding: 15px;
     border-radius: 15px;
-    background-color: #c4dbf5
+    background-color: #c4dbf5;
+    animation: 1.6s ease-out 0s 1 fadeIn;
 }
 
 .login {
@@ -21,7 +37,17 @@ body {
     border: 5px solid rgb(13, 6, 104);
     padding: 15px;
     border-radius: 15px;
-    background-color: #c4dbf5
+    background-color: #c4dbf5;
+    animation: 1.6s ease-out 0s 1 fadeIn;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; opacity: 1\9; } to { opacity:1; } 
+}
+
+
+.btn-center {
+    text-align: center;
 }
 
 .btn {
@@ -32,11 +58,15 @@ body {
     border-radius: 10px;
 }
 
-btn:hover{
-    transform: scale(1.2);
-    background-color: rgb(60, 53, 158)
+.btn:hover{
+    transform: scale(1.1);
+    background-color: rgb(81, 121, 207);
+    color: white;
 }
 
 h3 {
     text-align: center;
 }
+
+
+  
