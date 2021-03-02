@@ -68,5 +68,13 @@ h3 {
     text-align: center;
 }
 
+/* PROFILE PAGE CSS */
+.profilecard {
+margin: 25px; 
+margin-top: 5vh;
+}
 
-  
+/* sidenav styling */
+.sidenav {
+    background-color: rgb(13, 6, 104);
+}
