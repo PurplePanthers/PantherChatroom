@@ -15,7 +15,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Panther</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,24 +35,37 @@
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> -->
 
-    <div class="container contbody">
+    <!-- <div class="container contbody"> -->
         <div class="row">
-          <div class="col-sm-3">
-            <div class="card" style="width: 18rem;">
+                <!-- side nav with buttons -->
+                <div class="col-sm-2 sidenav">
+                    <ul>
+                        <a href="./randomchat.html"><button class="btn btn-primary mt-5 mb-3" style="width: 100%;">
+                            Start Chat </button></a>
+                            <a href="./friends.html"><button class="btn btn-primary mb-3" style="width: 100%;">
+                            View Friends</button></a>
+                            <a href="./index.html"><button class="btn btn-primary mb-3" style="width: 100%;">
+                            Logout</button></a>
+                    </ul>
+                </div>
+
+          <div class="col-sm-2">
+            <div class="card profilecard" style="width: 15rem; ">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fad%2FPlaceholder_no_text.svg%2F1200px-Placeholder_no_text.svg.png&f=1&nofb=1" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Username</h5>
-                  <p class="card-text">Short Bio</p>
                 </div>
               </div>
           </div>
-          <div class="col-md-9">
-              <p>My Friends</p>
-              <!-- insert user friends photos here -->
-      </div>
-    
+
+          <div class="col-md-8" style="margin-top: 5vh;">
+              <p>Short Bio</p>
+              <!-- can insert friends here when "view friends" is clicked -->
+         </div>
+
+    </div>
 </body>
 
 

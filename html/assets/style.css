@@ -69,7 +69,12 @@ h3 {
 }
 
 /* PROFILE PAGE CSS */
-.contbody {
-    margin-top: 15vh;
+.profilecard {
+margin: 25px; 
+margin-top: 5vh;
 }
 
+/* sidenav styling */
+.sidenav {
+    background-color: rgb(13, 6, 104);
+}
