@@ -17,11 +17,11 @@ const db = require('../config/connection.js')('chats_db', 'joseantonio')
 
 function router( app ){
 
-    app.get('./assets/register.html', function (req, res, next) {
+    app.get('./public/register.html', function (req, res, next) {
         res.render('registration-form');
     });
     // to store user input detail on post request
-    app.post('./assets/register.html', function (req, res, next) {
+    app.post('./public/register.html', function (req, res, next) {
     
         inputData = {
             first_name: req.body.first_name,
@@ -55,10 +55,10 @@ function router( app ){
     
     });
     //Login
-    app.get('/login', function (req, res, next) {
+    app.get('/public/login', function (req, res, next) {
         res.render('login-form');
     });
-    app.post('/login', function (req, res) {
+    app.post('/public/login', function (req, res) {
         var emailAddress = req.body.email_address;
         var password = req.body.password;
         var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
