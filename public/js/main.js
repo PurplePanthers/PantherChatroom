@@ -141,3 +141,10 @@ socket.on('chat message', function (msg) {
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
 });
+
+
+// LOG IN PAGE BUTTON JS
+const container = document.querySelector('.fancybtn')
+container.addEventListener('animationend', () => {
+  container.classList.remove('active');
+});
