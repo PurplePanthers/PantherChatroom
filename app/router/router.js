@@ -17,11 +17,11 @@ const db = require('../config/connection.js')('chats_db', 'joseantonio')
 
 function router( app ){
 
-    app.get('./public/register.html', function (req, res, next) {
+    app.get('/register', function (req, res, next) {
         res.render('registration-form');
     });
     // to store user input detail on post request
-    app.post('./public/register.html', function (req, res, next) {
+    app.post('/register', function (req, res, next) {
     
         inputData = {
             first_name: req.body.first_name,
@@ -52,7 +52,7 @@ function router( app ){
             }
             res.render('registration-form', { alertMsg: msg });
         })
-    
+        res.redirect('./public/login.html')
     });
     //Login
     app.get('/public/login', function (req, res, next) {
