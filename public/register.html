@@ -12,12 +12,19 @@
 
     <title>Panther Register</title>
 </head>
-
+<style>
+    body {
+    background-color: rgb(13, 6, 104);
+}
+</style>
 <body>
 
     <div class="container register">
         <h3>Please register to continue</h3>
+
+        <!-- REGISTRATION FORM -->
         <form method="post" action="/register">
+
             <div class="form-container">
                 <label for="exampleFormControlInput1" class="form-label">First Name</label>
                <div><input type="text" class="form-control" placeholder="First Name" name="first_name" required></div>
@@ -26,39 +33,22 @@
                <label for="exampleFormControlInput1" class="form-label">Username</label>
                <div><input type="text" class="form-control" placeholder="Username" name="username" required></div>
             </div>
+
             <div class="form-container">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
               <div><input type="password" class="form-control" placeholder="Password" name="password"></div>
               <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
               <div><input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" ></div> 
             </div>
+
             <div class="form-container"> 
                 <label for="exampleFormControlInput1" class="form-label">Security Question</label> 
                <div><input type="text" class="form-control" placeholder="Security Question" name="security_question" required></div>
                <div><input type="text" class="form-control" placeholder="Answer" name="security_answer" required></div>
-               <!-- <div><br><input type="radio" value="male" name="gender" required><label>Male</label>
-                   <input type="radio" value="female" name="gender" required><label>Female</label>
-              </div> -->
             </div>
-            <button class="btn"type="submit">Sign Up!</button>
-            <a class="btn"href="/PantherChatroom/html/login.html">Login</a>
+            <br>
+            <button class="btn signupbtn"type="submit">Sign Up!</button>
         </form>
         </div>
-</body>
-</html>
-<!-- <div class="mb-3">
-            <h3>Please register to continue</h3>
-            <label for="exampleFormControlInput1" class="form-label">Username</label>
-            <input type="username" class="form-control" id="exampleFormControlInput1" placeholder="username12345">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="**********">
-            <div class="btn-center">
-                <button type="button" class="btn">Sign Up!</button>
-            </div>
-          </div>
-    </div>
-    
 </body>
 </html>
