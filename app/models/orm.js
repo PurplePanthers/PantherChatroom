@@ -7,7 +7,7 @@ We abstract our database and information-modelling code
 into this section
 ====================================================== */
 
-const db = require("../config/connection.js")("chats_db", "joseantonio");
+const db = require("../config/connection.js")("chats_db", "jbm12345");
 // an external npm package we are using
 const moment = require("moment");
 
@@ -20,6 +20,12 @@ function getChatHeader(email) {
   return db.query(
     "SELECT first_name, img_path FROM USERS WHERE email = ?;",
     email
+  );
+}
+
+function saveMsg(username, msg) {
+  return db.query(
+    `INSERT INTO chats SET chat_name="${username}",messages="${msg}";`
   );
 }
 // add new user to db
@@ -51,9 +57,16 @@ function getProfile(id) {
 function deleteUser(id) {
   return db.query("DELETE FROM users WHERE id= ?", id);
 }
+
 //delete a chat from chats table
 function deleteChat(id) {
   return db.query(("DELETE FROM chats WHERE id=?", id));
+}
+
+function allMesagesFromUser(user) {
+  return db.query(
+    `SELECT * FROM chats WHERE chat_name="${user.username}" ORDER BY id`
+  );
 }
 
 // function getList(criteria = {}) {
@@ -89,4 +102,6 @@ module.exports = {
   deleteUser,
   deleteChat,
   addUser,
+  allMesagesFromUser,
+  saveMsg,
 };
