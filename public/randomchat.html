@@ -16,27 +16,31 @@
 </head>
  
 <body>
-   
-    <div class="row ">
 
-        <!-- SIDENAV WITH BUTTONS -->
-        <div class="col-2 sidenav">
-            <h5 id="uName" style="text-align: center; color: white ;margin-top: 20%;">Welcome ${username}</h5>
-            <ul>
-                <a href="./mainroom.html"><button class="btn leavebtn">
-                    Leave Chat</button></a>
-                <button class="btn sidebtn">
-                    Add Friend</button>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <img src="./assets/Panther-Chatroom---Logo-Reveal.gif" alt="Panther ChatRoom Logo"  width=250 style="animation-play-state: paused;"/>
+
+    <a href="/mainroom.html"><button class="btn btn-danger btn-sm mt-5 mb-3">Leave Chat </button></a>
+    <a href="" onclick="return false;"><button onclick="closeNav()" id="addFriend" class="btn btn-primary btn-sm mt-2 mb-3">Add Friend</button></a>
+
+  </div>
+  
+    <div class="row full-height">
+        <div class="col-2" style="background-color: rgb(4, 1, 44);">
+            <ul style="position: fixed; float: left;">
+                <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776; open</span>
+                
             </ul>
         </div>
 
         <div class="col-9">
             <div class="container main">
                 <!-- <div class="user">Said</div> -->
-                <h2 style="margin: 5%;">Please wait for someone to join...</h2>
-                <ul id="messages"></ul>
-                <form id="form" class="messageInput" action="">
-                    <input id="input" class="sendbtn" autocomplete="off" /><button>Send</button>
+                <h2 id="waitingMessage" style="margin: 5%;">Please wait for someone to join...</h2>
+                <ul id="messages" style="margin-top:5%;"></ul>
+                <form id="form" action="">
+                    <input id="input" autocomplete="off" /><button>Send</button>
                 </form>
 
 
@@ -51,8 +55,14 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js"></script>
     <script>
-      
-    </script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "100%";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
 </body>
 
 </html>
