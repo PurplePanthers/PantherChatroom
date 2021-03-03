@@ -7,7 +7,7 @@ html, body {
 /* OVER ALL CSS */
 body {
     font-family: 'Sulphur Point', sans-serif;
-    background-color: #c2c6c7
+    /* background-color: #c2c6c7 */
 }
     
 /* SIDENAV STYLING */
@@ -44,14 +44,14 @@ body {
 /* WELCOME, LOGIN AND REGISTER PAGE CSS */
 .welcome {
     text-align: center;
-    margin-top: 30vh;
-    color:rgb(13, 6, 104);
+    margin-top: 25vh;
     animation: 1.6s ease-out 0s 1 slideInTop;
 }
+
 /* animation */
 @keyframes slideInTop {
     0% {
-      transform: translateY(-500%);
+      transform: translateY(-450%);
     }
     100% {
       transform: translateY(0);
@@ -82,24 +82,24 @@ body {
 }
 
 
-.btn-center {
+/* .btn-center {
     text-align: center;
-}
+} */
 
 .btnwelcome {
-    margin-top: 25px;
-    color: white;
-    background-color: rgb(13, 6, 104);
+    /* margin-top: 15px; */
+    background-color: white;
+    color: rgb(13, 6, 104);
     width: 100px;
     border-radius: 10px;
-    margin: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .btnwelcome:hover{
     transform: scale(1.1);
     background-color: rgb(81, 121, 207);
     color: white;
-
 }
 
 h3 {
@@ -169,23 +169,7 @@ h3 {
 
 
 
-html,
-body {
-    height: 100%;
 
-}
-
-.full-height {
-    height: 107%;
-}
-
-
-
-body {
-    margin: 0;
-    padding-bottom: 3rem;
-    font-family: 'Cutive Mono', monospace;
-}
 
 .main{
     padding-bottom: 70px;
