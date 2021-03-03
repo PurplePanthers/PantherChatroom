@@ -34,7 +34,7 @@
         </div>
     </div>
     <script>
-        var room = Math.round(Math.random() * 10)
+        var room = Math.round(Math.random() * 100)
         var name = document.getElementById('uName').innerHTML
         document.getElementById('random').addEventListener('click', function () {
             window.document.location = '/randomchat.html' + '?username=' + name+'&room='+ room;

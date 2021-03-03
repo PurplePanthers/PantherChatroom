@@ -10,7 +10,8 @@ const {
     userJoin,
     getCurrentUser,
     userLeave,
-    getRoomUsers
+    getRoomUsers,
+    addFriend
 } = require('./utils/users');
 
 const app = express();
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/mainroom.html');
 });
 
-// THERE IS 3 WAYS TO SEND MESSAGES: 
+// THERE IS 3 WAYS TO SEND MESSAGES:
 // socket.emit()  ---> for the user
 // socket.broadcast.emit() ---> for everyone except that user
 // io.emit() ---> for everyone
@@ -55,6 +56,17 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('chat message', formatMessage(user.username, msg));
     });
 
+    socket.on('add friend',() => {
+        const user = getCurrentUser(socket.id);
+        socket.broadcast.to(user.room).emit('add friend', formatMessage(`${user.username}`, 'wants to Add you as friend'));
+        socket.emit('add sent', formatMessage(`${user.username}`, 'You have sent a friend request'));
+
+    })
+
+    socket.on('added',()=>{
+        const user = getCurrentUser(socket.id);
+        socket.broadcast.to(user.room).emit('added', formatMessage(`${user.username}`, ' has accepted your friend request!'));
+    })
     //When User disconnects
     socket.on('disconnect', () => {
         // console.log('user disconnected');
