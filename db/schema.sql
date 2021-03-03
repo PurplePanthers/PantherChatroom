@@ -20,10 +20,10 @@ CREATE TABLE users(
 -- Table to store chat between 2 people
 CREATE TABLE chats(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    chat_name VARCHAR(120) NOT NULL,
-    sender VARCHAR(200)
-    reciever VARCHAR(200)
-    messages TEXT NOT NULL
+    sender VARCHAR(200),
+    reciever VARCHAR(200),
+    messages TEXT NOT NULL,
+    `date` DATETIME
 );
 
 -- Table to track matches 
