@@ -14,15 +14,43 @@ body {
 .sidenav {
     background-color: rgb(13, 6, 104);
     height: 100vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    display: inline-block;
+
 }
+
+#uName {
+    text-align: center; 
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
 .sidebtn {
     color: rgb(13, 6, 104);
     background-color:  rgb(188, 208, 247);
     width: 100%;
-    margin: 5px;
     border-radius: 15px;
     text-align: center;
+    margin: auto;
+    display: inline-block;
+
 }
+
 .sidebtn:hover {
     color: #b2e2ee;
     background-color:  rgb(153, 182, 238);
@@ -192,41 +220,7 @@ h3 {
         --bs-gutter-x:0
      }
 }
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(12, 2, 39);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  text-align:center;
-}
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-
-}
-
-.sidenav a:hover{
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
