@@ -17,10 +17,21 @@ function getAllUsers() {
 }
 // this info is what will be shown at the top of a chat
 function getChatHeader(email) {
-    return db.query(
-        'SELECT first_name, img_path FROM USERS WHERE email = ?;',
-        email
-    );
+
+  return db.query(
+    `SELECT first_name, img_path FROM USERS WHERE email ="${email}";`
+  );
+}
+
+function saveMsg(username, msg, time, mems) {
+  return db.query(
+    `INSERT INTO chats SET chat_name="${username}",messages="${msg}", time="${time}", chat_members="${mems}";`
+  );
+
+}
+
+function getMemChat(users){
+  return db.query(`SELECT * FROM CHATS WHERE chat_members = "${users}"`)
 }
 // add new user to db
 async function addUser(data) {
@@ -83,11 +94,15 @@ function deleteChat(id) {
 }
 
 module.exports = {
-    getAllUsers,
-    getChatHeader,
-    getProfile,
-    deleteUser,
-    deleteChat,
-    addUser,
-    checkUser
+
+  getAllUsers,
+  getChatHeader,
+  getProfile,
+  deleteUser,
+  deleteChat,
+  addUser,
+  allMesagesFromUser,
+  saveMsg,
+  getMemChat,
+
 };

@@ -6,12 +6,14 @@ const { userInfo } = require('os');
 const PORT = process.env.PORT || 8080;
 const formatMessage = require('./utils/messages');
 const {
-    userJoin,
-    getCurrentUser,
-    userLeave,
-    getRoomUsers,
-    addFriend,
-} = require('./utils/users');
+  userJoin,
+  getCurrentUser,
+  userLeave,
+  getRoomUsers,
+  addFriend,
+} = require("./utils/users");
+const { getRoomReciever } = require("../html101/tutorials/realtimechatTutorial/utils/users.js");
+const { getMemChat } = require("./app/models/orm");
 
 const orm = require( './app/models/orm')
 const app = express();
@@ -161,74 +163,76 @@ io.on('connection', (socket) => {
         }
 
     });
-    // });
-    // console.log(`${socket.id} user connected`);
-    // console.log(`user id: `,socket.id);
 
-    //When a chat is sent
-    // socket.on('chat message', async (msg) => {
-    //     const user = getCurrentUser(socket.id);
-    //      // --------- database work  and calls ------------------------
-    // let data = formatMessage(`${user.username}`, msg);
+  });
+  // console.log(`${socket.id} user connected`);
+  // console.log(`user id: `,socket.id);
+
+  //When a chat is sent
+  socket.on("chat message", async (msg) => {
+    const user = getCurrentUser(socket.id);
+    // --------- database work  and calls ------------------------
+    let data = formatMessage(`${user.username}`, msg);
 
     //creating a unique field on both usernames to retrieve their chat from db
-    //let reciever = getRoomUsers(`${user.room}`);
-    //let users = []
-    //reciever.forEach((person)=> users.push(person.username))
+    let reciever = getRoomUsers(`${user.room}`);
+    let users = []
+    reciever.forEach((person)=> users.push(person.username))
 
     // saves messages between two users
-    //ormfnct.saveMsg(data.username, data.text, data.time, `${users}`);
+    ormfnct.saveMsg(data.username, data.text, data.time, `${users}`);
 
     //gets all messages from a specific user
-    // const allMessages = await ormfnct.allMesagesFromUser(user);
+    const allMessages = await ormfnct.allMesagesFromUser(user);
 
-    // gets all messsages between two users
-    // membersChat = await getMemChat(`${users}`)
-    //console.log(membersChat);
+    // gets all messsages between two users 
+    membersChat = await getMemChat(`${users}`)
+    console.log(membersChat);
     //console.log(`room: );
-
+    
     //-------------------------------------------------------
-    //     io.to(user.room).emit('chat message', formatMessage(user.username, msg));
-    // });
+    io.to(user.room).emit("chat message", formatMessage(user.username, msg));
+  });
 
-    // socket.on('add friend', () => {
-    //     const user = getCurrentUser(socket.id);
-    //     socket.broadcast
-    //         .to(user.room)
-    //         .emit(
-    //             'add friend',
-    //             formatMessage(`${user.username}`, 'wants to Add you as friend')
-    //         );
-    //     socket.emit(
-    //         'add sent',
-    //         formatMessage(`${user.username}`, 'You have sent a friend request')
-    //     );
-    // });
+  socket.on("add friend", () => {
+    const user = getCurrentUser(socket.id);
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        "add friend",
+        formatMessage(`${user.username}`, "wants to Add you as friend")
+      );
+    socket.emit(
+      "add sent",
+      formatMessage(`${user.username}`, "You have sent a friend request")
+    );
+  });
 
-    // socket.on('added', () => {
-    //     const user = getCurrentUser(socket.id);
-    //     socket.broadcast
-    //         .to(user.room)
-    //         .emit(
-    //             'added',
-    //             formatMessage(`${user.username}`, ' has accepted your friend request!')
-    //         );
-    // });
-    //When User disconnects
-    // socket.on('disconnect', () => {
-    //     // console.log('user disconnected');
-    //     const user = userLeave(socket.id);
-    //     if (user) {
-    //         io.to(user.room).emit(
-    //             'message',
-    //             formatMessage('PantherBot', `${user.username} has left the chat`)
-    //         );
-    //         io.to(user.room).emit('room users', {
-    //             room: user.room,
-    //             users: getRoomUsers(user.room),
-    //         });
-    //     }
-    // })
+  socket.on("added", () => {
+    const user = getCurrentUser(socket.id);
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        "added",
+        formatMessage(`${user.username}`, " has accepted your friend request!")
+      );
+  });
+  //When User disconnects
+  socket.on("disconnect", () => {
+    // console.log('user disconnected');
+    const user = userLeave(socket.id);
+    if (user) {
+      io.to(user.room).emit(
+        "message",
+        formatMessage("PantherBot", `${user.username} has left the chat`)
+      );
+      io.to(user.room).emit("room users", {
+        room: user.room,
+        users: getRoomUsers(user.room),
+      });
+    }
+  });
+
 });
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
