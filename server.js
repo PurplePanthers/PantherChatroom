@@ -32,11 +32,13 @@ app.get('/register', async function (req, res) {
 });
 // to store user input detail on post request
 app.post('/register', async function (req, res) {
+
     userData = req.body
+    console.log(userData)
     const result = await orm.addUser(userData)
     console.log('[Post] ', userData, result)
 
-    res.redirect('./public/mainroom.html')
+    res.redirect('/mainroom.html')
 })
 //Login
 app.get('/public/login', async function (req, res) {

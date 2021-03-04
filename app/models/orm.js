@@ -23,7 +23,8 @@ function getChatHeader(email) {
     );
 }
 // add new user to db
-function addUser(data) {
+async function addUser(data) {
+   
     inputData = {
         first_name: data.first_name,
         last_name: data.last_name,
@@ -31,28 +32,30 @@ function addUser(data) {
         password: data.password,
         confirm_password: data.confirm_password,
         security_question: data.security_question,
-        security_answer: data.sequrity_answer
+        security_answer: data.security_answer
     }
     // check unique username
-    var sql = 'SELECT * FROM users WHERE username =?';
-    db.query(sql, [inputData.email_address], function (err, data, fields) {
-        if (err) {
-            throw err
-        }
-        if (data.length > 1) {
-            var msg = inputData.email_address + ' already exists';
-        } else if (inputData.confirm_password != inputData.password) {
-            var msg = 'Password & Confirm Password is not Matched';
-        } else {
-
+    // var sql = 'SELECT * FROM users WHERE username =?';
+    // db.query(sql, inputData.username, function (err, data, fields) {
+    //     if (err) {
+    //         throw err
+    //     }
+    //     console.log(data)
+    //     if (data.length > 1) {
+    //         var msg = inputData.username + ' already exists';
+    //     } else if (inputData.confirm_password != inputData.password) {
+    //         var msg = 'Password & Confirm Password is not Matched';
+    //     } else {
+           
             // save users data into database
             var sql = 'INSERT INTO users SET ?';
-            db.query(sql, inputData, function (err, data) {
-                if (err) throw err;
-            });
-            var msg = 'Your are successfully registered';
-        }
-    })
+         return await db.query(sql, inputData);
+                
+                
+          
+            // var msg = 'Your are successfully registered';
+        
+    // })
     // let dataSet = {
     //   first_name: data.first_name,
     //   last_name: data.last_name,
@@ -67,7 +70,7 @@ function addUser(data) {
     //   security_answer: data.security_answer,
     // };
     // let query = 'INSERT INTO users SET ? ';
-    return db.query(sql, inputData);
+    // return db.query(sql, inputData);
 }
 function checkUser(username,password) {
     var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
