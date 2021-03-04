@@ -17,9 +17,10 @@
 </head>
 
 <body>
-    <div class="row">
-    <!-- side nav with buttons -->
-    <div class="col-sm-2 sidenav">
+
+<!-- COLLAPSABLE SIDE NAV -->
+    <nav class="sideNav">
+        <a href="#" class="closeBtn">&times;</a>
         <img src="assets/Panther-Chatroom---Logo-Reveal.gif" style=width:90%;/>
         <h5 id="uName" style="color: white;">insert username here</h5>
       
@@ -31,17 +32,81 @@
                     View Profile</button></a>
             <a href="./index.html"><button class="btn sidebtn">
                     Logout</button></a>
-      
-    </div>
-</div>
+        </nav>
+        <main class="main-content">
+        <button class="openSideNav">Click here to open sideNav</button>
+        <!-- <h1>Here is some sample text</h1>
+        <p>Here is some random sample text too</p> -->
+        </main>
 
-    <!-- SECTION FOR FRIENDS -->
-    <div class="col-9">
-        <div class="container main">
-            <!-- friends go here -->
-        </div>
-    </div>
-    </div>
+
 </body>
 
 </html>
+
+<style>
+    .sideNav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(46, 218, 195);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    }
+    .sideNav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    transition: 0.3s;
+    }
+    .sidenav a:hover {
+    color: #f1f1f1;
+    }
+    .sideNav .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    }
+    button {
+    padding: 15px;
+    background-color: rgb(0, 27, 145);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    border: none;
+    border-radius: 2%;
+    }
+    .main-content{
+    transition: 0.5s;
+    }
+    </style>
+    </head>
+    <body>
+    
+    
+    <script>
+    let openBtn = document.querySelector(".openSideNav");
+    openBtn.addEventListener("click", () => {
+    showNav();
+    });
+    let closeBtn = document.querySelector(".closeBtn");
+    closeBtn.addEventListener("click", () => {
+    hideNav();
+    });
+    function showNav() {
+    document.querySelector(".sideNav").style.width = "300px";
+    document.querySelector('.main-content').style.marginLeft = "300px";
+    }
+    function hideNav() {
+    document.querySelector(".sideNav").style.width = "0";
+    document.querySelector('.main-content').style.marginLeft = "0px";
+    }
+    </script>
