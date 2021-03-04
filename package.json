@@ -1,22 +1,31 @@
 {
-  "name": "PantherChatroom",
+  "name": "pantherchatroom",
   "version": "1.0.0",
-  "description": "**------------------------------------------------------------PROJECT 2----------------------------------------------------------------**\r                                                              ===========",
+  "description": "**------------------------------------------------------------PROJECT 2----------------------------------------------------------------**                                                              ===========",
   "main": "server.js",
   "directories": {
     "doc": "docs"
   },
-    "url": "git+https://github.com/PurplePanthers/PantherChatroom.git", 
-  "keywords": [],
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "socket.io": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PurplePanthers/PantherChatroom.git"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PurplePanthers/PantherChatroom/issues"
   },
-  "homepage": "https://github.com/PurplePanthers/PantherChatroom#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "moment": "^2.29.1",
-    "socket.io": "^3.1.2"
-  }
+  "homepage": "https://github.com/PurplePanthers/PantherChatroom#readme"
 }

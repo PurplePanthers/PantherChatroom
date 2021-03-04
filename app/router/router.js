@@ -12,67 +12,44 @@ router folder
 
 const moment = require('moment');
 const orm = require('../models/orm');
-const db = require('../config/connection.js')('chats_db', 'joseantonio')
+// const db = require('../config/connection.js')('chats_db', 'joseantonio')
 //Runs when client connects
 
 function router( app ){
 
-    app.get('/register', function (req, res, next) {
-        res.render('registration-form');
-    });
-    // to store user input detail on post request
-    app.post('/register', function (req, res, next) {
-    
-        inputData = {
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email_address: req.body.email_address,
-            gender: req.body.gender,
-            password: req.body.password,
-            confirm_password: req.body.confirm_password
-        }
-        // check unique email address
-        var sql = 'SELECT * FROM registration WHERE email_address =?';
-        db.query(sql, [inputData.email_address], function (err, data, fields) {
-            if (err) {
-                throw err
-            }
-            if (data.length > 1) {
-                var msg = inputData.email_address + 'was already exist';
-            } else if (inputData.confirm_password != inputData.password) {
-                var msg = 'Password & Confirm Password is not Matched';
-            } else {
-    
-                // save users data into database
-                var sql = 'INSERT INTO registration SET ?';
-                db.query(sql, inputData, function (err, data) {
-                    if (err) throw err;
-                });
-                var msg = 'Your are successfully registered';
-            }
-            res.render('registration-form', { alertMsg: msg });
-        })
-        res.redirect('./public/login.html')
-    });
-    //Login
-    app.get('/public/login', function (req, res, next) {
-        res.render('login-form');
-    });
-    app.post('/public/login', function (req, res) {
-        var emailAddress = req.body.email_address;
-        var password = req.body.password;
-        var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
-        db.query(sql, [emailAddress, password], function (err, data, fields) {
-            if (err) throw err
-            if (data.length > 0) {
-                req.session.loggedinUser = true;
-                req.session.emailAddress = emailAddress;
-                res.redirect('/dashboard');
-            } else {
-                res.render('login-form', { alertMsg: 'Your Email Address or password is wrong' });
-            }
-        })
-    })
+    // app.get('/register', async function (req, res, next) {
+    //     var users = await orm.getAllUsers()
+    //     console.log('[Get] All users')
+    //     res.send(users)
+    // });
+    // // to store user input detail on post request
+    // app.post('/register', async function (req, res, next) {
+    //      userData = req.body
+    //     const result = await orm.addUser(userData)
+    //     console.log("[Post] ",userData, result )
+    //         res.render('registration-form', { alertMsg: msg });
+    //     })
+    //     res.redirect('./public/mainroom.html')
+    // };
+    // //Login
+    // app.get('/public/login', function (req, res, next) {
+    //     res.render('login-form');
+    // });
+    // app.post('/public/login', function (req, res) {
+    //     var emailAddress = req.body.email_address;
+    //     var password = req.body.password;
+    //     var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
+    //     db.query(sql, [emailAddress, password], function (err, data, fields) {
+    //         if (err) throw err
+    //         if (data.length > 0) {
+    //             req.session.loggedinUser = true;
+    //             req.session.emailAddress = emailAddress;
+    //             res.redirect('/dashboard');
+    //         } else {
+    //             res.render('login-form', { alertMsg: 'Your Email Address or password is wrong' });
+    //         }
+    //     })
+    // })
     
     // to display registration form 
 
