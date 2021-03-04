@@ -5,30 +5,56 @@ const input = document.getElementById("input");
 const waitingMessage = document.getElementById("waitingMessage");
 const newFriend = document.getElementById("addFriend");
 
+const messages = document.getElementById('messages');
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+const waitingMessage = document.getElementById('waitingMessage');
+const newFriend = document.getElementById('addFriend');
+
+
+
 //Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
-  ignoreQueryPrefix: true,
-});
-console.log(username, room);
+    ignoreQueryPrefix: true
+})
 
-// Joined Room
-socket.emit("joined room", { username, room });
 
+console.log(username, room)
+
+// function joinedRoom(){
+//     socket.emit('joined room', { username, room });
+//     console.log('yey it worked')
+// }
+if (typeof(room) !== 'undefined') {
+    socket.emit('joined room', { username, room });
+}
+socket.on('rooms details',allRoomsArray=>{
+    console.log(allRoomsArray)
+})
+// let roomsArray = []
 // Get room users
-socket.on("room users", ({ room, users }) => {
-  // outputRoomName(room);
-  // outputUsers(users);
-  console.log(users);
-  console.log(users.length);
-  if (users.length > 1) {
-    waitingMessage.classList.add("hideMessage");
-    //Make Add Friend Button Work
-    newFriend.addEventListener("click", () => {
-      // console.log('add new friend')
-      socket.emit("add friend");
-    });
-  }
-});
+socket.on('room users',({room,users}) =>{
+    // outputRoomName(room);
+    // outputUsers(users);
+    // console.log(users)
+    //Get How person in each room as an object in array to send to server
+
+    // roomsArray.push({room , users : users.length})
+    // console.log(`in room: ${room} there is ${users.length} users`)
+    // console.log(roomsArray)
+
+    socket.emit('rooms details', room )
+
+    // console.log(users.length)
+    if(users.length>1){
+        waitingMessage.classList.add('hideMessage');
+        //Make Add Friend Button Work
+        newFriend.addEventListener('click',()=>{
+            // console.log('add new friend')
+            socket.emit('add friend',);
+        })
+    }
+})
 
 socket.on("added", (user) => {
   var item = document.createElement("li");
