@@ -18,14 +18,13 @@ function getAllUsers() {
 // this info is what will be shown at the top of a chat
 function getChatHeader(email) {
   return db.query(
-    "SELECT first_name, img_path FROM USERS WHERE email = ?;",
-    email
+    `SELECT first_name, img_path FROM USERS WHERE email ="${email}";`
   );
 }
 
-function saveMsg(username, msg) {
+function saveMsg(username, msg, time) {
   return db.query(
-    `INSERT INTO chats SET chat_name="${username}",messages="${msg}";`
+    `INSERT INTO chats SET chat_name="${username}",messages="${msg}", time="${time}";`
   );
 }
 // add new user to db
@@ -49,18 +48,17 @@ function addUser(data) {
 // returns fn, ln, username, email, bio and img path from users table
 function getProfile(id) {
   return db.query(
-    "SELECT first_name, last_name, login_id, email, bio, img_path FROM USERS WHERE id = ?;",
-    id
+    `SELECT first_name, last_name, login_id, email, bio, img_path FROM USERS WHERE id ="${id};`
   );
 }
 // delete a user from the users table
 function deleteUser(id) {
-  return db.query("DELETE FROM users WHERE id= ?", id);
+  return db.query(`DELETE FROM users WHERE id="${id}";`);
 }
 
 //delete a chat from chats table
 function deleteChat(id) {
-  return db.query(("DELETE FROM chats WHERE id=?", id));
+  return db.query(`DELETE FROM chats WHERE id="${id}";`);
 }
 
 function allMesagesFromUser(user) {

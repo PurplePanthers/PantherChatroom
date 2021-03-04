@@ -3,6 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const { userInfo } = require("os");
+const moment = require("moment");
 const PORT = process.env.PORT || 5000;
 const db = require("./app/config/connection.js")("chats_db", "jbm12345");
 const ormfnct = require("./app/models/orm");
@@ -62,12 +63,14 @@ io.on("connection", (socket) => {
   //When a chat is sent
   socket.on("chat message", async (msg) => {
     const user = getCurrentUser(socket.id);
-    //   (err, res) => {
-    //     if (err) throw err;
-    //}
-    ormfnct.saveMsg(`${user.username}`, msg);
+    // --- data base info and calls ------------------------
+    let data = formatMessage(user.username, msg);
+    let reciever = getRoomUsers(28);
+    console.log(reciever);
+    ormfnct.saveMsg(data.username, data.text, data.time);
     const allMessages = await ormfnct.allMesagesFromUser(user);
     console.log(allMessages);
+    //----------------------------------------------------
     io.to(user.room).emit("chat message", formatMessage(user.username, msg));
   });
 
