@@ -15,6 +15,8 @@ const {
   getRoomUsers,
   addFriend,
 } = require("./utils/users");
+const { getRoomReciever } = require("../html101/tutorials/realtimechatTutorial/utils/users.js");
+const { getMemChat } = require("./app/models/orm");
 
 const app = express();
 const server = http.createServer(app);
@@ -63,14 +65,26 @@ io.on("connection", (socket) => {
   //When a chat is sent
   socket.on("chat message", async (msg) => {
     const user = getCurrentUser(socket.id);
-    // --- data base info and calls ------------------------
-    let data = formatMessage(user.username, msg);
-    let reciever = getRoomUsers(28);
-    console.log(reciever);
-    ormfnct.saveMsg(data.username, data.text, data.time);
+    // --------- database work  and calls ------------------------
+    let data = formatMessage(`${user.username}`, msg);
+
+    //creating a unique field on both usernames to retrieve their chat from db
+    let reciever = getRoomUsers(`${user.room}`);
+    let users = []
+    reciever.forEach((person)=> users.push(person.username))
+
+    // saves messages between two users
+    ormfnct.saveMsg(data.username, data.text, data.time, `${users}`);
+
+    //gets all messages from a specific user
     const allMessages = await ormfnct.allMesagesFromUser(user);
-    console.log(allMessages);
-    //----------------------------------------------------
+
+    // gets all messsages between two users 
+    membersChat = await getMemChat(`${users}`)
+    console.log(membersChat);
+    //console.log(`room: );
+    
+    //-------------------------------------------------------
     io.to(user.room).emit("chat message", formatMessage(user.username, msg));
   });
 

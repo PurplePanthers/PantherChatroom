@@ -22,10 +22,14 @@ function getChatHeader(email) {
   );
 }
 
-function saveMsg(username, msg, time) {
+function saveMsg(username, msg, time, mems) {
   return db.query(
-    `INSERT INTO chats SET chat_name="${username}",messages="${msg}", time="${time}";`
+    `INSERT INTO chats SET chat_name="${username}",messages="${msg}", time="${time}", chat_members="${mems}";`
   );
+}
+
+function getMemChat(users){
+  return db.query(`SELECT * FROM CHATS WHERE chat_members = "${users}"`)
 }
 // add new user to db
 function addUser(data) {
@@ -102,4 +106,5 @@ module.exports = {
   addUser,
   allMesagesFromUser,
   saveMsg,
+  getMemChat,
 };
