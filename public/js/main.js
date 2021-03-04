@@ -5,21 +5,42 @@ const form = document.getElementById('form');
 const input = document.getElementById('input');
 const waitingMessage = document.getElementById('waitingMessage');
 const newFriend = document.getElementById('addFriend');
+
+
+
 //Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
+
+
 console.log(username, room)
 
-// Joined Room
-socket.emit('joined room', { username, room });
-
+// function joinedRoom(){
+//     socket.emit('joined room', { username, room });
+//     console.log('yey it worked')
+// }
+if (typeof(room) !== 'undefined') {
+    socket.emit('joined room', { username, room });
+}
+socket.on('rooms details',allRoomsArray=>{
+    console.log(allRoomsArray)
+})
+// let roomsArray = []
 // Get room users
 socket.on('room users',({room,users}) =>{
     // outputRoomName(room);
     // outputUsers(users);
-    console.log(users)
-    console.log(users.length)
+    // console.log(users)
+    //Get How person in each room as an object in array to send to server
+
+    // roomsArray.push({room , users : users.length})
+    // console.log(`in room: ${room} there is ${users.length} users`)
+    // console.log(roomsArray)
+
+    socket.emit('rooms details', room )
+
+    // console.log(users.length)
     if(users.length>1){
         waitingMessage.classList.add('hideMessage');
         //Make Add Friend Button Work
@@ -86,21 +107,6 @@ socket.on('add friend',user =>{
     // alert(`${user.username} has Sent You a Friend Request`);
 })
 
-// const roomName = document.getElementById('room-name');
-// const userList = document.getElementById('users');
-// //Add room name to Dom
-// function outputRoomName(room){
-//     roomName.innerText = room;
-// }
-// //Add users to Dom
-// function outputUsers(users){
-//     userList.innerHTML = `
-//     ${users.map(user => `<li>${user.username}</li>`),join('')}
-//     `;
-// }
-
-
-
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     if (input.value) {
@@ -140,4 +146,29 @@ socket.on('chat message', function (msg) {
     item.appendChild(div)
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
+});
+
+////////Main Room going to random chat
+
+
+// const roomName = document.getElementById('room-name');
+// const userList = document.getElementById('users');
+
+
+// //Add room name to Dom
+// function outputRoomName(room){
+//     roomName.innerText = room;
+// }
+// //Add users to Dom
+// function outputUsers(users){
+//     userList.innerHTML = `
+//     ${users.map(user => `<li>${user.username}</li>`),join('')}
+//     `;
+// }
+
+
+// LOG IN PAGE BUTTON JS
+const container = document.querySelector('.fancybtn');
+container.addEventListener('animationend', () => {
+    container.classList.remove('active');
 });

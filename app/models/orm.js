@@ -24,7 +24,7 @@ function getChatHeader(email) {
 }
 // add new user to db
 async function addUser(data) {
-   
+    console.log(data)
     inputData = {
         first_name: data.first_name,
         last_name: data.last_name,
@@ -36,42 +36,23 @@ async function addUser(data) {
     }
     // check unique username
     // var sql = 'SELECT * FROM users WHERE username =?';
-    // db.query(sql, inputData.username, function (err, data, fields) {
+    // db.query(sql, inputData.username, async function (err, data, fields) {
     //     if (err) {
     //         throw err
     //     }
     //     console.log(data)
     //     if (data.length > 1) {
-    //         var msg = inputData.username + ' already exists';
+    //         alert(inputData.username,' already exists!')
     //     } else if (inputData.confirm_password != inputData.password) {
-    //         var msg = 'Password & Confirm Password is not Matched';
+    //         alert('Password & Confirm Password have to match')
     //     } else {
-           
-            // save users data into database
-            var sql = 'INSERT INTO users SET ?';
-         return await db.query(sql, inputData);
-                
-                
-          
-            // var msg = 'Your are successfully registered';
-        
-    // })
-    // let dataSet = {
-    //   first_name: data.first_name,
-    //   last_name: data.last_name,
-    //   age: data.age,
-    //   gender: data.gender,
-    //   img_path: data.img_path,
-    //   bio: data.bio,
-    //   login_id: data.login_id,
-    //   login_pw: data.login_pw,
-    //   email: data.email,
-    //   security_question: data.security_question,
-    //   security_answer: data.security_answer,
-    // };
-    // let query = 'INSERT INTO users SET ? ';
-    // return db.query(sql, inputData);
+    // save users data into database
+    var sql = 'INSERT INTO users SET ?';
+    return await db.query(sql, inputData);
 }
+
+// })
+// }
 function checkUser(username,password) {
     var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
     db.query(sql, [username, password], function (err, data, fields) {
