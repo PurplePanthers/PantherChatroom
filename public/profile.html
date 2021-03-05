@@ -16,7 +16,10 @@
 
 
 <body>
-
+<style>.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}</style>
   <div class="row">
 
     <!-- side nav with buttons -->
@@ -40,16 +43,30 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU"
           class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Username</h5>
+          <h5 class="card-title" id='username'>Username</h5>
         </div>
       </div>
     </div>
 
     <div class="col-md-8" style="margin-top: 5vh;">
-      <p>Short Bio</p>
+      <div id='info' disabled>
+        <label for='first_name'>First Name</label>
+        <input id='first_name' name='firstName'/></br>
+        <label for='last_name'>Last Name</label>
+        <input id='last_name' name='lastName'/></br>
+        <label for='bio'>BIO</label>
+        <input id='bio' name='bio' /></br>
+        <label for='email'>Email</label>
+        <input id='email' name='email'/></br>
+        <label for='age'>Age</label>
+        <input id='age' name='age'/></br>
+      </div>
       <!-- insert online/offline status here -->
+      <button id="edit">Edit</button>
+      <button id="save">Save</button>
     </div>
 
+    
   </div>
   <script src="/socket.io/socket.io.js"></script>
 
@@ -82,6 +99,63 @@
     document.getElementById('uName').innerHTML = username
   </script>
 </body>
+<script src="/socket.io/socket.io.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+            integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
+            crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+<script>
+
+  // takes in user data from profile page and saves to local storage 'onclick' of savebtn
+  async function updateUser(){
+        let username = document.getElementById('username').innerHTML.trim();
+        let fn = document.getElementById('first_name').value.trim();
+        let ln = document.getElementById('last_name').value.trim();
+        let bio = document.getElementById('bio').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let age = document.getElementById('age').value.trim();
+
+        let updatedProfile = {
+        username: username,
+        first_name: fn,
+        last_name: ln,
+        bio: bio,
+        email: email,
+        age: age,
+        };
+
+  const fetchOptions = {
+     headers: { 'Content-Type': 'application/json'},
+     method: 'post',
+     body: JSON.stringify(updatedProfile),
+            }
+            const result = await fetch( `/editProfile/${username}`, fetchOptions ).then( r=>r.json() )
+            console.log(result)
+          }
+
+    // populates the profile page with db data
+    async function fetchProfile(){
+      const profile = await fetch( `/getProfile/${username}` ).then( r=>r.json() )
+      document.getElementById('bio').value = ` ${profile[0].bio}`
+      document.getElementById('email').value = `${profile[0].email}`
+      document.getElementById('age').value = `${profile[0].age}`
+      document.getElementById('first_name').value = `${profile[0].first_name}`
+      document.getElementById('last_name').value = `${profile[0].last_name}`
+      document.getElementById('username').innerHTML = `${username}`
+    }
+  
+    fetchProfile()
+    // save and edit buttons -> save triggers POST request to save data.
+    document.getElementById('edit').addEventListener('click', ()=>{
+      document.getElementById('info').classList.remove("disabledbutton")
+      // document.getElementById('info').disabled = false;
+    })
+    document.getElementById('save').addEventListener('click', ()=>{
+      updateUser()
+      document.getElementById('info').classList.add("disabledbutton")
+      // document.getElementById('info').disabled = true;
+    })
+</script>
 
 </html>

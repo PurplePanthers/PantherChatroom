@@ -26,8 +26,16 @@ function getRoomUsers(room){
     return users.filter(user=> user.room === room);
 }
 
+function getRoomReciever(room, sender){
+  console.log(`sender: ${sender} room: ${room}`)
+  console.log(getRoomUsers(room))
+  console.log(users)
+  var otherperson= users.filter((user)=>{user.room === room && user.username != sender})
+  return otherperson
+}
+
 // function addFriend(){
 
 // }
 
-module.exports = {userJoin,getCurrentUser, userLeave, getRoomUsers};
+module.exports = {userJoin,getCurrentUser, userLeave, getRoomUsers,getRoomReciever};

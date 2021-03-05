@@ -7,7 +7,7 @@ We abstract our database and information-modelling code
 into this section
 ====================================================== */
 
-const db = require('../config/connection.js')('chats_db', 'joseantonio');
+const db = require('../config/connection.js')('chats_db', 'jbm12345');
 // an external npm package we are using
 const moment = require('moment');
 
@@ -17,10 +17,25 @@ function getAllUsers() {
 }
 // this info is what will be shown at the top of a chat
 function getChatHeader(email) {
-    return db.query(
-        'SELECT first_name, img_path FROM USERS WHERE email = ?;',
-        email
-    );
+
+  return db.query(
+    `SELECT first_name, img_path FROM USERS WHERE email ="${email}";`
+  );
+}
+
+function updateUser(data){
+  return db.query(`UPDATE users SET first_name="${data.first_name}", last_name="${data.last_name}", bio="${data.bio}", email="${data.email}", age="${data.age}" WHERE username ="${data.username}" `)
+}
+
+function saveMsg(username, msg, time, mems) {
+  return db.query(
+    `INSERT INTO chats SET chat_name="${username}",messages="${msg}", time="${time}", chat_members="${mems}";`
+  );
+
+}
+
+function getMemChat(users){
+  return db.query(`SELECT * FROM CHATS WHERE chat_members = "${users}"`)
 }
 // add new user to db
 async function addUser(data) {
@@ -67,10 +82,9 @@ function checkUser(username,password) {
     })
 }
 // returns fn, ln, username, email, bio and img path from users table
-function getProfile(id) {
+function getProfile(username) {
     return db.query(
-        'SELECT first_name, last_name, login_id, email, bio, img_path FROM USERS WHERE id = ?;',
-        id
+        `SELECT first_name, last_name, age, email, bio, img_path FROM USERS WHERE username = "${username}";`
     );
 }
 // delete a user from the users table
@@ -83,11 +97,15 @@ function deleteChat(id) {
 }
 
 module.exports = {
-    getAllUsers,
-    getChatHeader,
-    getProfile,
-    deleteUser,
-    deleteChat,
-    addUser,
-    checkUser
+
+  getAllUsers,
+  getChatHeader,
+  getProfile,
+  deleteUser,
+  deleteChat,
+  addUser,
+  saveMsg,
+  getMemChat,
+  updateUser,
+
 };
