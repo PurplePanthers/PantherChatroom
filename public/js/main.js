@@ -172,3 +172,17 @@ const container = document.querySelector('.fancybtn');
 container.addEventListener('animationend', () => {
     container.classList.remove('active');
 });
+
+
+// COLLAPSIBLE SIDENAV
+const sidebar = document.querySelector('.sidebar');
+const mainContent = document.querySelector('.main-content');
+
+function showHideSidebar() {
+  sidebar.classList.toggle('sidebar_small')
+  mainContent.classList.toggle('main-content_large')
+}
+
+function toggle(element) {
+  element.innerText = element.innerText === '<<' ? '>>' : '<<';      
+}
