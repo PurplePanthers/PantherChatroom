@@ -98,11 +98,11 @@
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <img src="./assets/Panther-Chatroom-Logo.gif" alt="Panther ChatRoom Logo" width=250 />
-            <a><button id="random" onclick="goToChat()" class="btn btn-danger btn-sm mt-5 mb-3">Start Chat</button></a>
-            <a><button onclick="goToProfile()" class="btn btn-danger btn-sm mt-2 mb-2">View
+            <img src="./assets/Panther-Chatroom-Logo.gif" alt="Panther ChatRoom Logo"  width=250/>
+            <a><button id="random" onclick="closeNav()" class="btn btn-danger btn-sm mt-5 mb-3">Start Chat</button></a>
+            <a href="/profile.html"><button onclick="return false;" class="btn btn-danger btn-sm mt-2 mb-2">View
                     Profile</button></a>
-            <a href="/index.html"><button 
+            <a href="/index.html"><button onclick="return false;"
                     class="btn btn-danger btn-sm mt-2 mb-2">Logout</button></a>
 
         </div>
@@ -124,7 +124,6 @@
             </div>
             <div class="col-9">
                 <div class="container main " style="margin: 10%;">
-                    <div class="col-4">
                     <div class="row">
                         <h1 style="margin-bottom:10% ;">Friends:</h1>
                         <div id="online" class="col-6">
@@ -134,8 +133,6 @@
                             <h4>Offline:</h4>
                         </div>
                     </div>
-                </div>
-                <div class="col-6">asfas</div>
                 </div>
             </div>
         </div>
@@ -148,7 +145,7 @@
             //     console.log('[available room]',roomAvailable)
             // })
             // var roomChoice = Math.round(Math.random() * 100)
-
+          
 
         </script>
         <script>
@@ -165,38 +162,6 @@
             crossorigin="anonymous"></script>
         <script src="js/main.js"></script>
         <script>
-            function printNameonWelcome() {
-                // setTimeout(()=>{closeNav()}, 3000)
-
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                console.log(username)
-                document.getElementById('uName').innerHTML = username
-            }
-            printNameonWelcome()
-            function goToChat() {
-
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                var roomChoice = Math.round(Math.random() * 100)
-                socket.on('new room', newRoom => {
-                    roomChoice = newRoom
-                    console.log('roomChoice:', roomChoice)
-                })
-                console.log('roomChoice:', roomChoice)
-
-                window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
-            }
-            function goToProfile() {
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                console.log('trying to go', username)
-                window.document.location = '/profile.html' + '?username=' + username;
-            }
-
             socket.on('show friends', friends => {
                 console.log('inside show friends function')
                 console.log(friends)
@@ -218,25 +183,25 @@
                         <div class="col-6"><a href="http://localhost:8080/randomchat.html?username=${name}&room=${element.user2}-${name}"><i style="font-size:24px" class="fa">&#xf27b;</i></a></div>
                     </div>
                     `
-
+                    
 
                     //or other avatar pictures from : https://www.iconfinder.com/
                 });
 
             })
-            // var name = document.getElementById('uName').innerHTML
-            // // var roomChoice = Math.round(Math.random() * 100)
-            // document.getElementById('random').addEventListener('click', function () {
-            //     var roomChoice = Math.round(Math.random() * 100)
-            //     socket.on('new room', newRoom => {
-            //         roomChoice = newRoom
-            //         console.log('roomChoice:', roomChoice)
-            //     })
-            //     console.log('roomChoice:', roomChoice)
+            var name = document.getElementById('uName').innerHTML
+            // var roomChoice = Math.round(Math.random() * 100)
+            document.getElementById('random').addEventListener('click', function () {
+                var roomChoice = Math.round(Math.random() * 100)
+                socket.on('new room', newRoom => {
+                    roomChoice = newRoom
+                    console.log('roomChoice:', roomChoice)
+                })
+                console.log('roomChoice:', roomChoice)
 
-            //     window.document.location = '/randomchat.html' + '?username=' + name + '&room=' + roomChoice;
-            //     // joinedRoom()
-            // })
+                window.document.location = '/randomchat.html' + '?username=' + name + '&room=' + roomChoice;
+                // joinedRoom()
+            })
         </script>
 
 </body>
