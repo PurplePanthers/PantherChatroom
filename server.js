@@ -74,6 +74,7 @@ io.on('connection', (socket) => {
     socket.on('joined room', ({ username, room }) => {
         let isActive = true
         const user = userJoin(socket.id, username, room, isActive)
+        console.log(user)
         socket.join(user.room)
         socket.emit('new room', user.room)
         //to welcome user
@@ -89,6 +90,14 @@ io.on('connection', (socket) => {
     });
     // console.log(`${socket.id} user connected`);
     // console.log(`user id: `,socket.id);
+
+    //Get who is online
+    // socket.emit('friend online', () => {
+    //     console.log('this user is active now', username)
+    //     let isActive = true
+    //     const user = userJoin(socket.id, username, room, isActive)
+    //     console.log(user)
+    // })
 
     // When a chat is sent
     socket.on('chat message', (msg) => {

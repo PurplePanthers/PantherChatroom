@@ -25,7 +25,7 @@
         <h3>Please log in to continue</h3>
         <form method="post" action="/login">
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Username" name="username" required>
+                <input id="testingUsername" type="text" class="form-control" placeholder="Username" name="username" required>
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
@@ -121,8 +121,16 @@
                 <!-- <a class="btn btnwelcome" href="/PantherChatroom/html/register.html">Register</a> -->
             </div>
         </form>
+        <button id="gotToMainroom">testing</button>
     </div>
- 
+ <script>
+        document.getElementById('gotToMainroom').addEventListener('click', function () {
+            //     var roomChoice = Math.round(Math.random() * 100)
+           let username = document.getElementById("testingUsername").value
+                window.document.location = '/mainroom.html' + '?username=' + username ;
+                // joinedRoom()
+            })
+ </script>
    
     <!-- JS LINK -->
     <script href="js/main.js"></script>
