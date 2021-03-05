@@ -17,9 +17,10 @@
 
 
 </head>
- 
+
 <body>
 
+<<<<<<< HEAD
     <style>
         .grid-container {
           width: 100vw;
@@ -143,20 +144,28 @@
 <!-- <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <img src="./assets/Panther-Chatroom---Logo-Reveal.gif" alt="Panther ChatRoom Logo"  width=250 style="animation-play-state: paused;"/>
+=======
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img src="./assets/Panther-Chatroom-Logo.gif" alt="Panther ChatRoom Logo" width=250
+            style="animation-play-state: paused;" />
 
-    <a href="/mainroom.html"><button class="btn btn-danger btn-sm mt-5 mb-3">Leave Chat </button></a>
-    <a href="" onclick="return false;"><button onclick="closeNav()" id="addFriend" class="btn btn-primary btn-sm mt-2 mb-3">Add Friend</button></a>
+        <a><button id="goToMainroom" class="btn btn-danger btn-sm mt-5 mb-3">Leave Chat </button></a>
+        <a href="" onclick="return false;"><button onclick="closeNav()" id="addFriend"
+                class="btn btn-primary btn-sm mt-2 mb-3">Add Friend</button></a>
+>>>>>>> main
 
-  </div>
-  
+    </div>
+
     <div class="row full-height">
         <div class="col-2" style="background-color: rgb(4, 1, 44);">
             <ul style="position: fixed; float: left;">
                 <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776; open</span>
-                
+
             </ul>
         </div> -->
 
+<<<<<<< HEAD
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" 
     integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg==" 
@@ -164,13 +173,36 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js"></script>
     <!-- <script>
+=======
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+        integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
+        crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('goToMainroom').addEventListener('click', function () {
+            window.document.location = '/mainroom.html' + '?username=' + username;
+        })
+
+>>>>>>> main
         function openNav() {
-          document.getElementById("mySidenav").style.width = "100%";
+            document.getElementById("mySidenav").style.width = "100%";
         }
-        
+
         function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.width = "0";
         }
+<<<<<<< HEAD
         </script> -->
+=======
+    </script>
+</body>
+>>>>>>> main
 
 </html>

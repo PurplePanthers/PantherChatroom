@@ -4,20 +4,18 @@ CREATE DATABASE chats_db;
 USE chats_db;
 CREATE TABLE users(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) UNIQUE NOT NULL,
+    last_name VARCHAR(100) UNIQUE NOT NULL,
+    age INT UNSIGNED NOT NULL,
+    gender TINYINT(1), 
+    img_path VARCHAR(1024),
+    bio TEXT NOT NULL,
     username VARCHAR(200) UNIQUE NOT NULL,
-    -- age INT UNSIGNED NOT NULL,
-    -- gender TINYINT(1), 
-    -- img_path VARCHAR(1024),
-    -- bio TEXT NOT NULL,
-    -- login_id VARCHAR(200) UNIQUE NOT NULL,
-    password VARCHAR(200) NOT NULL,
-    confirm_password VARCHAR(200) NOT NULL,
+    login_pw VARCHAR(200) UNIQUE NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
     security_question TEXT NOT NULL,
-	security_answer TEXT NOT NULL
+    security_answer TEXT NOT NULL
 );
-
 
 CREATE TABLE chats(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -32,7 +30,7 @@ CREATE TABLE matches(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     matched  TINYINT(1)
 );
-INSERT INTO users (first_name, last_name, age, gender, img_path, bio, login_id, login_pw, email, security_question, security_answer)
+INSERT INTO users (first_name, last_name, age, gender, img_path, bio, username, login_pw, email, security_question, security_answer)
 VALUES 
 ('Lois', 'Dahle', 85, 0, 'https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png', 'About Lois and what she likes....', 'lois85', 'lois12345', "lois@gmail.com", 'What is your mothers maiden name', 'loisAnswer'),
 ('April', 'Jones', 54, 0, 'https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png', 'About April and what she likes....', 'april54', 'april12345',"april@gmail.com", 'What is your mothers maiden name', 'aprilAnswer'),
