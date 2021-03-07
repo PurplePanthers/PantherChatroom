@@ -1,4 +1,4 @@
-INSERT INTO users (first_name, last_name, age, gender, img_path, bio, login_id, login_pw, email, security_question, security_answer)
+INSERT INTO users (first_name, last_name, age, gender, img_path, bio, username, login_pw, email, security_question, security_answer)
 VALUES 
 ('Lois', 'Dahle', 85, 0, 'https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png', 'About Lois and what she likes....', 'lois85', 'lois12345', "lois@gmail.com", 'What is your mothers maiden name', 'loisAnswer'),
 ('April', 'Jones', 54, 0, 'https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png', 'About April and what she likes....', 'april54', 'april12345',"april@gmail.com", 'What is your mothers maiden name', 'aprilAnswer'),

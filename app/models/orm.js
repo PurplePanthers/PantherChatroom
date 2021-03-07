@@ -48,7 +48,7 @@ function getChatHeader(email) {
 
 function updateUser(data) {
     return db.query(
-        `UPDATE users SET first_name="${data.first_name}", last_name="${data.last_name}", bio="${data.bio}", email="${data.email}", age="${data.age}" WHERE username ="${data.username}" `
+        `UPDATE users SET first_name="${data.first_name}", last_name="${data.last_name}", bio="${data.bio}", email="${data.email}", age="${data.age}", img_path="${data.img_path}" WHERE username ="${data.username}" `
     );
 }
 

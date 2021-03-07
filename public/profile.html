@@ -127,9 +127,9 @@
 
         <div class="col-4 mt-2">
           <div class="card profilecard" style="margin:5%">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU"
-              class="card-img-top" alt="..." />
+            <img id='profilePic'
+              src=''
+              class="card-img-top" alt='https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png' />
             <!-- <div class="card-body">
               <h5 class="card-title" id='username'>Username</h5>
             </div> -->
@@ -165,6 +165,12 @@
               <label for="bio" class="col-sm-2 col-form-label">Bio</label>
               <div class="col-sm-10">
                 <textarea class="form-control" id="bio" placeholder="Bio"></textarea>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="pic" class="col-sm-2 col-form-label">Pic</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="pic" placeholder="img url"></textarea>
               </div>
             </div>
           </div>
@@ -238,20 +244,22 @@
 
   // takes in user data from profile page and saves to local storage 'onclick' of savebtn
   async function updateUser() {
-    // let username = document.getElementById('username').innerHTML.trim();
+    let username = document.getElementById('uName').innerHTML.trim();
     let fn = document.getElementById('first_name').value.trim();
     let ln = document.getElementById('last_name').value.trim();
     let bio = document.getElementById('bio').value.trim();
     let email = document.getElementById('email').value.trim();
     let age = document.getElementById('age').value.trim();
+    let pic = document.getElementById('pic').value.trim();
 
     let updatedProfile = {
-      // username: username,
+     username: username,
       first_name: fn,
       last_name: ln,
       bio: bio,
       email: email,
       age: age,
+      pic: pic,
     };
 
     const fetchOptions = {
@@ -266,11 +274,20 @@
   // populates the profile page with db data
   async function fetchProfile() {
     const profile = await fetch(`/getProfile/${username}`).then(r => r.json())
+    console.log(profile)
     document.getElementById('bio').value = ` ${profile[0].bio}`
     document.getElementById('email').value = `${profile[0].email}`
     document.getElementById('age').value = `${profile[0].age}`
     document.getElementById('first_name').value = `${profile[0].first_name}`
     document.getElementById('last_name').value = `${profile[0].last_name}`
+    document.getElementById('pic').value = ` ${profile[0].img_path}`
+
+    if (profile[0].img_path == ''){
+      document.getElementById('profilePic').src = `https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png`
+    }else{
+      document.getElementById('profilePic').src = `${profile[0].img_path}`
+    }
+    
     // document.getElementById('username').innerHTML = `${username}`
   }
 
@@ -284,6 +301,7 @@
     updateUser()
     document.getElementById('info').classList.add("disabledbutton")
     // document.getElementById('info').disabled = true;
+    location.reload();
   })
 </script>
 

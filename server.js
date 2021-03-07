@@ -82,7 +82,9 @@ app.post('/editProfile/:username', async (req, res)=>{
         email: req.body.email,
         age: req.body.age,
         username: req.body.username,
+        img_path: req.body.pic,
     };
+    console.log(inputData)
     await ormfnct.updateUser(inputData)
     console.log('User updated')
 })
