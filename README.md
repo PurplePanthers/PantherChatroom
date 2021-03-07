@@ -70,4 +70,19 @@ select a friend to chat with
 create a room for multiple friends 
 update profile info 
 
+technologies:
 
+socketio
+dotenv
+mysql
+heroku
+js
+html
+css
+Linting
+
+------------------
+Mishca ;intro+task roles
+Said: technologies (3mins)
+Jack : challenges and demo
+Jose : conclusion
