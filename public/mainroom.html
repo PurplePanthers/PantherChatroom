@@ -12,7 +12,6 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="./assets/panther-icon.png" type="image/icon" sizes="16x16">
     <link href="assets/style.css" rel="stylesheet">
 </head>
 
@@ -21,6 +20,7 @@
         body {
             background-color: rgb(13, 6, 104);
         }
+
         .mainroomContent {
             width: 300px;
             text-align: center;
@@ -36,7 +36,7 @@
         <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:300px; />
         <h5 id="uName" class="navLinks" style="color: white;">Welcome insert username here</h5>
 
-        <a onclick="goToChat()" class="sidebtn navLinks">Start Chat</a>
+        <a  onclick="goToChat()" class="sidebtn navLinks">Start Chat</a>
         <a id='goToFriends' class="sidebtn navLinks">View Friends</a>
         <a onclick="goToProfile()" class="sidebtn navLinks">View
             Profile</a>
@@ -56,19 +56,41 @@
     <script>
 
         var name = document.getElementById('uName').innerHTML
+        // var roomChoice = Math.round(Math.random() * 100)
         document.getElementById('goToFriends').addEventListener('click', function () {
             window.document.location = '/friends.html' + '?username=' + username;
         })
-       
-        function printNameonWelcome() {
-            const { username } = Qs.parse(location.search, {
-                ignoreQueryPrefix: true
-            })
-            console.log('why not cominnnnnnnnnnnnnnnnng', username)
-            document.getElementById('uName').innerHTML = `Welcome ${username}`
-        }
-        printNameonWelcome()
+        // document.getElementById('random').addEventListener('click', function () {
+        //     var roomChoice = Math.round(Math.random() * 100)
+        //     socket.on('new room', newRoom => {
+        //         roomChoice = newRoom
+        //         console.log('roomChoice:', roomChoice)
+        //     })
+        //     console.log('roomChoice:', roomChoice)
 
+        //     window.document.location = '/randomchat.html' + '?username=' + name + '&room=' + roomChoice;
+        //     // joinedRoom()
+        // })
+
+        // function printNameonWelcome() {
+        //     // setTimeout(()=>{closeNav()}, 3000)
+
+        //     const { username } = Qs.parse(location.search, {
+        //         ignoreQueryPrefix: true
+        //     })
+        //     console.log(username)
+        //     document.getElementById('uName').innerHTML = username
+        // }
+        // printNameonWelcome()
+        function printNameonWelcome() {
+      const { username } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      console.log('why not cominnnnnnnnnnnnnnnnng',username)
+      document.getElementById('uName').innerHTML = `Welcome ${username}`
+    }
+    printNameonWelcome()
+        
         function goToChat() {
 
             const { username } = Qs.parse(location.search, {
