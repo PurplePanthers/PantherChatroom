@@ -16,32 +16,40 @@ room = 'Friends Room'
 
 console.log(username, room)
 
-if (typeof (room) !== 'undefined') {
-    socket.emit('joined room', { username, room });
-}
+// if (typeof (room) !== 'undefined') {
+// socket.emit('joined room', username );
+// }
 socket.on('rooms details', allRoomsArray => {
     console.log(allRoomsArray)
 })
 // let roomsArray = []
 // Get room users
-socket.on('room users', ({ room, users }) => {
-    socket.emit('rooms details', room)
+// socket.on('room users', ({ room, users }) => {
+//     socket.emit('rooms details', room)
 
-    // console.log(users.length)
-    if (users.length > 1) {
-        waitingMessage.classList.add('hideMessage');
-        //Make Add Friend Button Work
-        newFriend.addEventListener('click', () => {
-            // console.log('add new friend')
-            socket.emit('add friend',);
-        })
-    }
-})
+//     // console.log(users.length)
+//     if (users.length > 1) {
+//         waitingMessage.classList.add('hideMessage');
+//         //Make Add Friend Button Work
+//         newFriend.addEventListener('click', () => {
+//             // console.log('add new friend')
+//             socket.emit('add friend',);
+//         })
+//     }
+// })
+
+
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     if (input.value) {
+        let user2 = document.getElementById('secondUser').value;
+        console.log('friends.js', user2);
         socket.emit('chat message', input.value);
+        let msg = input.value;
+        let thisObj = { msg, user2 };
+        console.log('[thisObj]',thisObj)
+        socket.emit('friend message', thisObj);
         input.value = '';
         input.focus();
     }
@@ -58,8 +66,13 @@ document.getElementById('createRoom').addEventListener('click', () => {
         document.getElementById('messages').innerHTML = ''
         document.getElementById('input').disabled = false
         socket.connect()
+        // console.log(secondUser)
+        socket.emit('joined friend room' ,({username, secondUserName}))
         console.log('username', username)
         // socket.emit('friend online',username)
+        // console.log(`[username]:${username} ; [seconUserName]: ${secondUserName}`)
+        // socket.emit('getMessages',([username,secondUserName]))
+
     }
 })
 
@@ -77,6 +90,7 @@ socket.on('message', message => {
 })
 
 socket.on('chat message', function (msg) {
+    console.log('message  showing ', msg)
     console.log(msg.username)
     // console.log(username)
     let name = ''
@@ -95,7 +109,21 @@ socket.on('chat message', function (msg) {
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
 });
-
+socket.on('pastMessages', (membersChat) => {
+    console.log(membersChat);
+    membersChat.forEach((msg) => {
+        console.log('herererererererererer', msg)
+        var item = document.createElement('li');
+        const div = document.createElement('div');
+        div.classList.add('message');
+        div.innerHTML = `<p class ="meta"> ${msg.chat_name} - <span> ${msg.time}</span></p>
+    <p class="text">${msg.messages} </p>`;
+        // item.textContent =
+        item.appendChild(div);
+        messages.appendChild(item);
+    });
+    window.scrollTo(0, document.body.scrollHeight);
+});
 ////////Main Room going to random chat
 
 

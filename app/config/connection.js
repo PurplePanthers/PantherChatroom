@@ -16,7 +16,7 @@ class Database {
     }
     close() {
         return new Promise((resolve, reject) => {
-            this.connection.end(err => {
+            this.connection.end((err) => {
                 if (err) {
                     return reject(err);
                 }
@@ -25,16 +25,16 @@ class Database {
         });
     }
 }
-function dbConnect( dbName, dbPassword ){
+function dbConnect(dbName, dbPassword) {
     // at top INIT DB connection
     const db = new Database({
         host: 'localhost',
         port: 3306,
         user: 'root',
         password: dbPassword,
-        database: dbName
-    })
-    return db
+        database: dbName,
+    });
+    return db;
 }
 
-module.exports = dbConnect
+module.exports = dbConnect;
