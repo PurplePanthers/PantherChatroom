@@ -22,47 +22,61 @@ function getChatHeader(email) {
         email
     );
 }
-// add new user to db
-async function addUser(data) {
-    console.log(data)
-    inputData = {
-        first_name: data.first_name,
-        last_name: data.last_name,
-        username: data.username,
-        password: data.password,
-        confirm_password: data.confirm_password,
-        security_question: data.security_question,
-        security_answer: data.security_answer
-    }
-    // check unique username
-    // var sql = 'SELECT * FROM users WHERE username =?';
-    // db.query(sql, inputData.username, async function (err, data, fields) {
-    //     if (err) {
-    //         throw err
-    //     }
-    //     console.log(data)
-    //     if (data.length > 1) {
-    //         alert(inputData.username,' already exists!')
-    //     } else if (inputData.confirm_password != inputData.password) {
-    //         alert('Password & Confirm Password have to match')
-    //     } else {
-    // save users data into database
-    var sql = 'INSERT INTO users SET ?';
-    return await db.query(sql, inputData);
-}
+function addUser(inputData){
+    //get username=inputadata.username send error message if not found then insert
+    // var sqlCheck = 'SELECT * FROM users WHERE username = ?';
+    // db.query(sqlCheck, inputData.username, function(){
+    //     if(sqlCheck){
+    //         return 'This username already exists'
+    //     }else{
+            // save users data into database
+            var sql = 'INSERT INTO users SET ?';
+            return db.query(sql, inputData);
+        // }
 
-// })
+    // })
+
+
+
+}
+// add new user to db
+// async function addUser(data) {
+//     console.log(data)
+//     inputData = {
+//         first_name: data.first_name,
+//         last_name: data.last_name,
+//         username: data.username,
+//         password: data.password,
+//         confirm_password: data.confirm_password,
+//         security_question: data.security_question,
+//         security_answer: data.security_answer
+//     }
+//     // check unique username
+//     if (inputData.confirm_password != inputData.password) {
+//         console.log('Password & Confirm Password have to match');
+//     }
+//     var sqlCheck = 'SELECT * FROM users WHERE username =?';
+//     db.query(sqlCheck, inputData.username, async function (data) {
+//         console.log(`[username]${inputData.username}`)
+//         if (data.length > 1) {
+//             alert(`${inputData.username} already exists!`)
+//         } else {
+//             // save users data into database
+//             var sql = 'INSERT INTO users SET ?';
+//             return await db.query(sql, inputData);
+//         }
+
+//     })
 // }
 function checkUser(username,password) {
-    var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
-    db.query(sql, [username, password], function (err, data, fields) {
-        if (err) throw err
+    var sql = 'SELECT * FROM users WHERE username =? AND password =?';
+    db.query(sql, [username, password], function (err, data) {
         if (data.length > 0) {
             req.session.loggedinUser = true;
             req.session.emailAddress = emailAddress;
-            res.redirect('/dashboard');
+            res.redirect('/mainroom.html');
         } else {
-            res.render('login-form', { alertMsg: 'Your Email Address or password is wrong' });
+            alert('Login information is wrong!')
         }
     })
 }

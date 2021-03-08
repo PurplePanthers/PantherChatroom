@@ -26,11 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + 'index.html');
 });
-app.get('/register', async function (req, res) {
-    var users = await orm.getAllUsers()
-    console.log('[Get] All users')
-    res.send(users)
-});
 // to store user input detail on post request
 app.post('/register', async function (req, res) {
 
@@ -47,11 +42,11 @@ app.get('/public/login', async function (req, res) {
     console.log('[Get] All users')
     res.send(users)
 });
-app.post('/public/login', async function (req, res) {
-    var username = req.body.email_address;
+app.post('/login', async function (req, res) {
+    var username = req.body.username;
     var password = req.body.password;
     var result = orm.checkUser(username,password)
-    res.redirect('./public/mainroom.html')
+    res.redirect('/mainroom.html')
 })
 
 let friends = []
