@@ -15,7 +15,7 @@ const {
     addFriend,
     getRoomReciever,
 } = require('./utils/users');
-const { getMemChat } = require('./app/models/orm');
+const { getMemChat, checkUser } = require('./app/models/orm');
 
 const orm = require( './app/models/orm')
 const app = express();
@@ -39,11 +39,11 @@ app.get('/register', async function (req, res) {
 app.post('/register', async function (req, res) {
 
     const userData = req.body
-    console.log(userData)
+    console.log('[userData]',userData)
     const result = await orm.addUser(userData)
     console.log('[Post] ', userData, result)
 
-    //res.redirect('/login.html')
+    // res.sendFile(__dirname + '/public/login.html');
 })
 //Login
 app.get('/public/login', async function (req, res) {
@@ -52,10 +52,12 @@ app.get('/public/login', async function (req, res) {
     res.send(users)
 });
 app.post('/public/login', async function (req, res) {
-    var username = req.body.email_address;
-    var password = req.body.password;
-    var result = orm.checkUser(username,password)
-    res.redirect('./public/mainroom.html')
+    var username = req.body.username;
+    var password = req.body.login_pw;
+    console.log('[username and pass',username,password)
+    var result = await orm.checkUser(username,password)
+    console.log('[loginresult]',result)
+    res.send(result)
 })
 
 //edit profile

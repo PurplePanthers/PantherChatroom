@@ -15,6 +15,7 @@
   <link href="assets/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="./assets/panther-logo.png" type="image/icon" sizes="16x16">
 
   <title>Panther Profile</title>
 </head>
@@ -128,8 +129,8 @@
         <div class="col-4 mt-2">
           <div class="card profilecard" style="margin:5%">
             <img id='profilePic'
-              src=''
-              class="card-img-top" alt='https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png' />
+              src='https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png'
+              class="card-img-top" alt='Profile Pic' />
             <!-- <div class="card-body">
               <h5 class="card-title" id='username'>Username</h5>
             </div> -->
@@ -275,20 +276,18 @@
   async function fetchProfile() {
     const profile = await fetch(`/getProfile/${username}`).then(r => r.json())
     console.log(profile)
-    document.getElementById('bio').value = ` ${profile[0].bio}`
-    document.getElementById('email').value = `${profile[0].email}`
-    document.getElementById('age').value = `${profile[0].age}`
-    document.getElementById('first_name').value = `${profile[0].first_name}`
-    document.getElementById('last_name').value = `${profile[0].last_name}`
-    document.getElementById('pic').value = ` ${profile[0].img_path}`
-
-    if (profile[0].img_path == ''){
-      document.getElementById('profilePic').src = `https://180dc.org/wp-content/uploads/2017/11/profile-placeholder.png`
-    }else{
+    document.getElementById('bio').value = profile[0].bio ? profile[0].bio: ''
+    document.getElementById('email').value = profile[0].email? profile[0].email :''
+    document.getElementById('age').value = profile[0].age ? profile[0].age : ''
+    document.getElementById('first_name').value = profile[0].first_name? profile[0].first_name : ''
+    document.getElementById('last_name').value = profile[0].last_name?profile[0].last_name:''
+    document.getElementById('pic').value = profile[0].img_path? profile[0].img_path : ''
+  
+    console.log(profile[0].img_path)
+    if(profile[0].img_path){
       document.getElementById('profilePic').src = `${profile[0].img_path}`
     }
     
-    // document.getElementById('username').innerHTML = `${username}`
   }
 
   fetchProfile()

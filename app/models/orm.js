@@ -37,7 +37,7 @@ function addFriend(username, friend, randomRoomNumber) {
 
 // returns all users
 function getAllUsers() {
-    return db.query('SELECT * FROM USERS');
+    return db.query('SELECT * FROM USERS;');
 }
 // this info is what will be shown at the top of a chat
 function getChatHeader(email) {
@@ -65,26 +65,31 @@ function getMemChat(user1, user2) {
 }
 // add new user to db
 async function addUser(data) {
-    var sql = 'INSERT INTO users SET ?';
-    return db.query(sql, data);
+    console.log('lets see how data is shown',data)
+    var sql = 'INSERT INTO users SET first_name';
+    return db.query(`INSERT INTO users (first_name, last_name, username, login_pw, security_question, security_answer)VALUES ('${data.first_name}','${data.last_name}','${data.username}','${data.login_pw}','${data.security_question}','${data.security_answer}')`);
 }
 
 // })
 // }
 function checkUser(username, password) {
-    var sql = 'SELECT * FROM users WHERE email_address =? AND password =?';
-    db.query(sql, [username, password], function (err, data, fields) {
-        if (err) throw err;
-        if (data.length > 0) {
-            req.session.loggedinUser = true;
-            req.session.emailAddress = emailAddress;
-            res.redirect('/dashboard');
-        } else {
-            res.render('login-form', {
-                alertMsg: 'Your Email Address or password is wrong',
-            });
-        }
-    });
+    // var sql = 'SELECT * FROM users WHERE username =? AND login_pw =?';
+    return db.query(`SELECT * FROM users WHERE username = '${username}' AND login_pw ='${password}'; `)
+    // db.query(sql, [username, password], function (err, data, fields) {
+    //     if (err) throw err;
+    //     if (data.length > 0) {
+    //         req.session.loggedinUser = true;
+    //         req.session.emailAddress = emailAddress;
+    //         console.log('in in checkuser')
+    //         res.redirect('/dashboard');
+    //     } else {
+    //         console.log('in in checkuser')
+
+    //         res.render('login-form', {
+    //             alertMsg: 'Your Email Address or password is wrong',
+    //         });
+    //     }
+    // });
 }
 
 function checkStatus(username){
@@ -133,4 +138,5 @@ module.exports = {
     isNotActive,
     getRoomName,
     checkStatus,
+    checkUser,
 };

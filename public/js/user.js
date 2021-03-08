@@ -14,26 +14,18 @@ async function addUser() {
     if (confirm_password != inputData.login_pw) {
         alert('Password & Confirm Password have to match');
         return false;
-    }    
+    }
     req = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-
+            'Accept': 'application/json'
         },
         body: JSON.stringify(inputData),
     }
     console.log(req)
-    await fetch('/register', req).then(r => r.json())
-    console.log('blahhhh')
+    let result = fetch('/register', req).then(r => r.json())
     window.document.location = '/login.html'
-    // check unique username
-    // if (inputData.confirm_password != inputData.password) {
-    //     console.log('Password & Confirm Password have to match');
-    // }
-
-
-    // })
 }
 async function checkUser(username, password) {
     var sql = 'SELECT * FROM users WHERE username =? AND password =?';
