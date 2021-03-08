@@ -1,13 +1,20 @@
 # PantherChatroom
 
 `` Contributors ``
+
 Said Mghabghab
+
 Jack Murphy
+
 Mischa Dabrowski
+
 Jose Espinoza
 
+
 `` DEPLOYED HEROKU LINK ``
+
  ~ insert link here ~ 
+ 
  
 `` User Story ``
 
