@@ -29,10 +29,10 @@ function addUser(inputData){
     //     if(sqlCheck){
     //         return 'This username already exists'
     //     }else{
-            // save users data into database
-            var sql = 'INSERT INTO users SET ?';
-            return db.query(sql, inputData);
-        // }
+    // save users data into database
+    var sql = 'INSERT INTO users SET ?';
+    return db.query(sql, inputData);
+    // }
 
     // })
 

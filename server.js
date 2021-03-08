@@ -37,9 +37,10 @@ app.post('/register', async function (req, res) {
     res.redirect('/mainroom.html')
 })
 //Login
-app.get('/public/login', async function (req, res) {
+app.get('/login', async function (req, res) {
     var users = await orm.getAllUsers()
     console.log('[Get] All users')
+    res.redirect('/mainroom')
     res.send(users)
 });
 app.post('/login', async function (req, res) {
