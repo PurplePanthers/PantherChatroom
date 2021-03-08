@@ -9,10 +9,13 @@ The controller is the logical related to interaction and
 real controller elements are the 'router', so we create a
 router folder
 ====================================================== */
-
+require('dotenv').config();
 const moment = require('moment');
 const orm = require('../models/orm');
-const db = require('../config/connection.js')('chats_db', 'jbm12345');
+const db = require('../config/connection.js')(
+    process.env.DB_HOST,
+    process.env.DB_PASS
+);
 //Runs when client connects
 
 function router(app) {

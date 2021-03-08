@@ -40,21 +40,20 @@ async function addUser() {
 async function checkUser(username, password) {
     var sql = 'SELECT * FROM users WHERE username =? AND password =?';
     // db.query(sql, [username, password], async function (err, data, fields) {
-        
-        req = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-    
-            },
-        }
-            await fetch('/login',req)
-        // if (data.length > 0) {
-        //     req.session.loggedinUser = true;
-        //     req.session.emailAddress = emailAddress;
-        //     res.redirect('/mainroom.html');
-        // } else {
-        //     alert('Login information is wrong!')
-        // }
-    })
+
+    req = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+
+        },
+    }
+    await fetch('/login',req)
+    // if (data.length > 0) {
+    //     req.session.loggedinUser = true;
+    //     req.session.emailAddress = emailAddress;
+    //     res.redirect('/mainroom.html');
+    // } else {
+    //     alert('Login information is wrong!')
+    // }
 }
