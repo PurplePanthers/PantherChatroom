@@ -43,7 +43,7 @@ app.post('/register', async function (req, res) {
     const result = await orm.addUser(userData)
     console.log('[Post] ', userData, result)
 
-    res.redirect('/mainroom.html')
+    res.redirect('/login.html')
 })
 //Login
 app.get('/public/login', async function (req, res) {
