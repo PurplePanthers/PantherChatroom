@@ -1,5 +1,40 @@
 # PantherChatroom
 
+`` Contributors ``
+Said Mghabghab
+Jack Murphy
+Mischa Dabrowski
+Jose Espinoza
+
+`` DEPLOYED HEROKU LINK ``
+ ~ insert link here ~ 
+ 
+`` User Story ``
+
+As a user I would like to use a live chat to meet new people and make new friends 
+
+When 
+I go to the web page, I can register or login
+
+Then
+I can go to my profile and input a short bio and a photo
+
+When
+I enter a random chat, I can talk to the person on the other end
+ 
+If 
+I enjoy talking to the person, I can add them as a friend
+
+Else
+I can leave the chat and start a new one
+
+When
+I view my friends list, I can see who is online and who is offline
+
+Then
+I can search through my friends and choose a friend to start chatting with
+
+
 **------------------------------------------------------------PROJECT 2----------------------------------------------------------------**
                                                              ===========
 
@@ -54,6 +89,7 @@
   -server.js
 **-------------------------------------------------------------------------------------------------------------------------------------**
 
+`` References `` 
 picture uploading  :  https://github.com/c0dehot/node-picture-upload
 
                
