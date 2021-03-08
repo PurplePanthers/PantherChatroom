@@ -1,6 +1,6 @@
 # PantherChatroom
 
-`` Contributors ``
+`` CONTRIBUTORS ``
 
 Said Mghabghab
 
@@ -16,7 +16,7 @@ Jose Espinoza
 https://panther-chatroom.herokuapp.com/
  
  
-`` User Story ``
+`` USER STORY ``
 
 As a user I would like to use a live chat to meet new people and make new friends 
 
