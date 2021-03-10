@@ -101,3 +101,10 @@ I can search through my friends and choose a friend to start chatting with
 picture uploading  :  https://github.com/c0dehot/node-picture-upload
                
 **------------------------------------------------------------Screenshots-----------------------------------------------------------------**
+* Screenshots are available inside ./assets/ for more details
+![GitHub Logo](/public/assets/main-room.JPG)
+![GitHub Logo](/public/assets/random-chat.JPG)
+![GitHub Logo](/public/assets/profile.JPG)
+![GitHub Logo](/public/assets/friends.JPG)
+
+**------------------------------------------------------------License-----------------------------------------------------------------**
