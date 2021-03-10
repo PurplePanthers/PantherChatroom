@@ -1,6 +1,6 @@
 # PantherChatroom
 
-**--------------------------------------------------------------CONTRIBUTORS--------------------------------------------------------------**
+**-----------------------------------------------------------------------------CONTRIBUTORS-----------------------------------------------------------------------------**
 
 Said Mghabghab
 
@@ -10,12 +10,23 @@ Mischa Dabrowski
 
 Jose Espinoza
 
-**---------------------------------------------------------DEPLOYED HEROKU LINK-------------------------------------------------------------**
+**------------------------------------------------------------------------------PROJECT 2--------------------------------------------------------------------------------**
+                                                             ===========
+
+                           front-end    +    RESTful API calls    +    backend     +     database
+                              | |                   | |                  | |                | |
+                           Bootstrap 5       GET\POST\DELETE\PUT     Use Node+Express     MySQL (ORM)
+                                          ___________
+                        \\\\\\\\\\\\\    |           |    ( https://socket.io/docs/v3/index.html ) ::::::::\
+                         |NEW LIBRARY :: | Socket.IO | :: ( https://socket.io/docs/v3/client-api ) :::::::::}~~>
+                        /////////////    |___________|    ( https://socket.io/docs/v3/server-api ) ::::::::/
+
+**------------------------------------------------------------------------DEPLOYED HEROKU LINK----------------------------------------------------------------------------**
 
 https://panther-chatroom.herokuapp.com/
  
  
- **--------------------------------------------------------------USER STORY-----------------------------------------------------------------**
+ **-----------------------------------------------------------------------------USER STORY--------------------------------------------------------------------------------**
 
 As a user I would like to use a live chat to meet new people and make new friends 
 
@@ -39,21 +50,8 @@ I view my friends list, I can see who is online and who is offline
 
 Then
 I can search through my friends and choose a friend to start chatting with
-
-
-**-------------------------------------------------------------PROJECT 2---------------------------------------------------------------**
-                                                             ===========
-
-                           front-end    +    RESTful API calls    +    backend     +     database
-                              | |                   | |                  | |                | |
-                           Bootstrap 5       GET\POST\DELETE\PUT     Use Node+Express     MySQL (ORM)
-                                          ___________
-                        \\\\\\\\\\\\\    |           |    ( https://socket.io/docs/v3/index.html ) ::::::::\
-                         |NEW LIBRARY :: | Socket.IO | :: ( https://socket.io/docs/v3/client-api ) :::::::::}~~>
-                        /////////////    |___________|    ( https://socket.io/docs/v3/server-api ) ::::::::/
-
                                  
-**---------------------------------------------------------Future Development-----------------------------------------------------------**
+**-------------------------------------------------------------------------Future Development---------------------------------------------------------------------------**
                                               
 -Upload local pictures
 -Make a General channel
@@ -63,9 +61,9 @@ I can search through my friends and choose a friend to start chatting with
 -Allow users to create rooms and add their friends to it
 -Increased Security
                                                
-**---------------------------------------------------------------------------------------------------------------------------------------**
+**-----------------------------------------------------------------------------------------------------------------------------------------------------------------------**
 
-**---------------------------------------------LogIn/SignUp      -     Chatting Room-----------------------------------------------------**
+**---------------------------------------------LogIn/SignUp      -     Chatting Room-------------------------------------------------------------------------------------**
                                                    | |                      | |
                                             __MYSQL(Heroku)__           __SOCKET.IO__
                              _______________________|________________________|_____________________________________________________
@@ -80,7 +78,7 @@ I can search through my friends and choose a friend to start chatting with
                                                                                                         |--|--------|-------|-----------|
                                                                                                         |id|username|friend |friend_room|
                                                                                                         |__|________|_______|___________|
-**-------------------------------------------------------------Structure-----------------------------------------------------------------**      
+**----------------------------------------------------------------------------Structure--------------------------------------------------------------------------------**      
       
 * Structured at least loosely MVC:
  /project2
@@ -91,21 +89,29 @@ I can search through my friends and choose a friend to start chatting with
   -/app/routes (for the routing logic, or ‘controller’ component)
   -server.js
   
-**---------------------------------------------------------Additional tools---------------------------------------------------------------**
+**------------------------------------------------------------------------Additional tools------------------------------------------------------------------------------**
 
 * LINT Tool* ==> automated checking of the source code for programmatic and stylistic errors.          
 * NPM package dotenv* ==> Wont expose sensitive API key information on the server.    
 
-**------------------------------------------------------------References ----------------------------------------------------------------**
+**----------------------------------------------------------------------------References -------------------------------------------------------------------------------**
 
 picture uploading  :  https://github.com/c0dehot/node-picture-upload
                
-**------------------------------------------------------------Screenshots-----------------------------------------------------------------**
+**---------------------------------------------------------------------------Screenshots--------------------------------------------------------------------------------**
 * Screenshots are available inside ./assets/ for more details
 ![GitHub Logo](/public/assets/main-room.JPG)
 ![GitHub Logo](/public/assets/random-chat.JPG)
 ![GitHub Logo](/public/assets/profile.JPG)
 ![GitHub Logo](/public/assets/friends.JPG)
 
-**------------------------------------------------------------License-----------------------------------------------------------------**
+**-----------------------------------------------------------------------------License-----------------------------------------------------------------------------------**
+Copyright <2021> <Purple Panthers>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------**
  
