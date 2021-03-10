@@ -1,6 +1,6 @@
 # PantherChatroom
 
-`` CONTRIBUTORS ``
+**--------------------------------------------------------------CONTRIBUTORS--------------------------------------------------------------**
 
 Said Mghabghab
 
@@ -10,13 +10,12 @@ Mischa Dabrowski
 
 Jose Espinoza
 
-
-`` DEPLOYED HEROKU LINK ``
+**---------------------------------------------------------DEPLOYED HEROKU LINK-------------------------------------------------------------**
 
 https://panther-chatroom.herokuapp.com/
  
  
-`` USER STORY ``
+ **--------------------------------------------------------------USER STORY-----------------------------------------------------------------**
 
 As a user I would like to use a live chat to meet new people and make new friends 
 
@@ -42,7 +41,7 @@ Then
 I can search through my friends and choose a friend to start chatting with
 
 
-**------------------------------------------------------------PROJECT 2----------------------------------------------------------------**
+**-------------------------------------------------------------PROJECT 2---------------------------------------------------------------**
                                                              ===========
 
                            front-end    +    RESTful API calls    +    backend     +     database
@@ -54,16 +53,19 @@ I can search through my friends and choose a friend to start chatting with
                         /////////////    |___________|    ( https://socket.io/docs/v3/server-api ) ::::::::/
 
                                  
-**-------------------------------------------Some Ideas To Improve The Application-----------------------------------------------------**
-                                                        1-Show who’s online.
-                                                      2-Add private messaging.
-                                                    3-Add support for nicknames.
-                                               4-Add “{user} is typing” functionality.
-                                       5-Don’t send the same message to the user that sent it.
-                             6-Broadcast a message to connected users when someone connects or disconnects.
-**-------------------------------------------------------------------------------------------------------------------------------------**
+**---------------------------------------------------------Future Development-----------------------------------------------------------**
+                                              
+-Upload local pictures
+-Make a General channel
+-Add Video Call feature
+-Insert Emojis or pictures in text
+-Add “{user} is typing” functionality.
+-Allow users to create rooms and add their friends to it
+-Increased Security
+                                               
+**---------------------------------------------------------------------------------------------------------------------------------------**
 
-**---------------------------------------------LogIn/SignUp      -     Chatting Room---------------------------------------------------**
+**---------------------------------------------LogIn/SignUp      -     Chatting Room-----------------------------------------------------**
                                                    | |                      | |
                                             __MYSQL(Heroku)__           __SOCKET.IO__
                              _______________________|________________________|_____________________________________________________
@@ -73,19 +75,13 @@ I can search through my friends and choose a friend to start chatting with
    |ID| FN | LN| Age | Gendre|img_path|BIO|username|login_pw|email|S_Q|S_A |    |id|chat_name|time|chat_members|messages|          |
    |__|____|___|_____|_______|________|___|________|________|_____|___|____|    |__|_________|____|____________|________|          |
                                                                                                               _____________________|
-                                                                                                         ____|_____
-                                                                                                        |_matches__|
-                                                                                                        |--|-------|
-                                                                                                        |id|matched|
-                                                                                                        |__|_______|
-**-------------------------------------------------------------------------------------------------------------------------------------**      
-       
-* LINT Tool* ==> automated checking of the source code for programmatic and stylistic errors.          
-* NPM package dotenv* ==> Wont expose sensitive API key information on the server.
-* Test with npm i -D jest (ex: https://socket.io/docs/v3/testing/#Example-with-jest).         
-
-
-**-------------------------------------------------------------------------------------------------------------------------------------**
+                                                                                                         ____|__________________________
+                                                                                                        |___________matches_____________|
+                                                                                                        |--|--------|-------|-----------|
+                                                                                                        |id|username|friend |friend_room|
+                                                                                                        |__|________|_______|___________|
+**-------------------------------------------------------------Structure-----------------------------------------------------------------**      
+      
 * Structured at least loosely MVC:
  /project2
   -/public (all the html, the ‘view’ component)
@@ -94,24 +90,14 @@ I can search through my friends and choose a friend to start chatting with
   -/app/orm.js (the ‘model’ component)
   -/app/routes (for the routing logic, or ‘controller’ component)
   -server.js
-**-------------------------------------------------------------------------------------------------------------------------------------**
+  
+**---------------------------------------------------------Additional tools---------------------------------------------------------------**
 
-`` References `` 
+* LINT Tool* ==> automated checking of the source code for programmatic and stylistic errors.          
+* NPM package dotenv* ==> Wont expose sensitive API key information on the server.    
+
+**------------------------------------------------------------References ----------------------------------------------------------------**
+
 picture uploading  :  https://github.com/c0dehot/node-picture-upload
-
                
-**-------------------------------------------------------------LOGIN/SIGN UP-----------------------------------------------------------**
-
-**-------------------------------------------------------------CHOICES-----------------------------------------------------------**
-Start a new random chat
-        If all is good : ADD as a friend
-        else Start new chat
-             Go to main room
-             
-    IF no other person is available ( waiting room )
-        
-select a friend to chat with
-create a room for multiple friends 
-update profile info 
-
-
+**------------------------------------------------------------Screenshots-----------------------------------------------------------------**
