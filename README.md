@@ -103,6 +103,7 @@ picture uploading  :  https://github.com/c0dehot/node-picture-upload
 ![GitHub Logo](/public/assets/main-room.JPG)
 ![GitHub Logo](/public/assets/random-chat.JPG)
 ![GitHub Logo](/public/assets/profile.JPG)
+![GitHub Logo](/public/assets/friends.JPG)
 
 **-----------------------------------------------------------------------------License-----------------------------------------------------------------------------------**
 Copyright <2021> <Purple Panthers>
